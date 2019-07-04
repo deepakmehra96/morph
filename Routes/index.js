@@ -14,7 +14,6 @@ const AppNavigator = createStackNavigator(
     }
 );
 
-
 const Router = createAppContainer(AppNavigator);
 
 export default Router
