@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-class Dashboard extends React.Component{
+import SignUp from '../Auth/Signup';
+
+class Main extends React.Component{
     static navigationOptions= {
         header : null
     }
@@ -11,9 +13,9 @@ class Dashboard extends React.Component{
     render(){
         return(
             <View>
-                <Text>Morph app</Text>
+               <SignUp />
             </View>
         )
     }
 }
-export default Dashboard
+export default Main
