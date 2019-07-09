@@ -1,17 +1,20 @@
 import axios from 'axios'
 import { API_URL } from '../../components/constant';
-import { OPEN_TOAST } from './ActionTypes';
+import { OPEN_TOAST, SAVE_USER_DATA } from './ActionTypes';
 import {AsyncStorage} from 'react-native'
 
 export const openToast = data => {
     return {
         type: OPEN_TOAST,
-        payload: {
-            toast_msg: data
-        }
+        payload:data
     }
 }
-
+export const SaveUserData = data => {
+    return {
+        type: SAVE_USER_DATA,
+        payload: data
+    }
+}
 
 export const LoginApi = (data) => {
     return async dispatch => {
@@ -19,7 +22,7 @@ export const LoginApi = (data) => {
         // var headers = {
         //     'Authorization': 'Bearer'+(' ')+token
         // }
-        console.log(data,"login data")
+        dispatch(SaveUserData(data))
         // return new Promise(
         //     (resolve, reject) => 
         //     axios.post(`${API_URL}/login/`, data)

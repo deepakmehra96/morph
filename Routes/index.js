@@ -9,13 +9,13 @@ import SliderScreens from "../Views/Slider";
 
 const AppNavigator = createStackNavigator(
     {
+      SliderScreens:SliderScreens,
       Main: Main,
       Login: Login,
       SignUp: SignUp,
       ActivationCode: ActivationCode,
       Dashboard: Dashboard,
       Header:Header,
-      SliderScreens:SliderScreens
     },
     {
       initialRouteName: "SliderScreens",

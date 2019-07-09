@@ -14,12 +14,12 @@ var { height, width } = Dimensions.get('window')
 let validationSchema = {
     firstName: {
         required: {
-            errorMsg: 'Name is required'
+            errorMsg: 'First Name is required'
         },
     },
     lastName: {
         required: {
-            errorMsg: 'Age is required'
+            errorMsg: 'Last Name is required'
         },
     },
     email: {

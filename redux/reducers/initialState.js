@@ -1,7 +1,7 @@
 
-
 const initialState = {
-    userData: {}
+    userData: {},
+    toast_msg:''
 }
 
 export default initialState;

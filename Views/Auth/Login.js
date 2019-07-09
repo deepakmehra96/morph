@@ -43,7 +43,6 @@ class Login extends React.Component {
         };
     }
     handleChange(key, event) {
-        console.log(key, event, "key, event")
         let { userData } = this.state
         userData[key] = event
         this.setState({ userData, errors: {} })

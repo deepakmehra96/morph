@@ -7,8 +7,8 @@ var { height, width } = Dimensions.get('window');
 
 class ToastComponent extends Component {
   componentWillReceiveProps(nextProps){
-    if(this.props.userData.toast_msg !== nextProps.userData.toast_msg && nextProps.userData.toast_msg !== ''){
-      this.refs.toast.show(nextProps.userData.toast_msg);
+    if(this.props.reducer.toast_msg !== nextProps.reducer.toast_msg && nextProps.reducer.toast_msg !== ''){
+      this.refs.toast.show(nextProps.reducer.toast_msg);
       this.props.dispatch(openToast(''))
     }
   }
