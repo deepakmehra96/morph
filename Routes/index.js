@@ -18,7 +18,7 @@ const AppNavigator = createStackNavigator(
       Header:Header,
     },
     {
-      initialRouteName: "SliderScreens",
+      initialRouteName: "Main",
       defaultNavigationOptions: {
         gesturesEnabled: false
       },
