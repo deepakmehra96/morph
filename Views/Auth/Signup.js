@@ -1,25 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
 import microValidator from 'micro-validator'
 import is from 'is_js'
 import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
-import { Button } from 'react-native-paper';
-import { fontSmall, errorColor } from '../../components/constant';
+import { fontSmall, errorColor, whiteColor, fontXXL, fontMedium } from '../../components/constant';
 import { SignUpApi } from '../../redux/actions';
+import ButtonMain from '../../components/ButtonMain';
+import BackgroundContent from '../../components/BackgroundContent';
+import BackgroundText from '../../components/BackgroundText';
+import { CheckBox } from 'react-native-elements'
 var { height, width } = Dimensions.get('window')
 
 
 let validationSchema = {
-    firstName: {
+    fullName: {
         required: {
             errorMsg: 'First Name is required'
-        },
-    },
-    lastName: {
-        required: {
-            errorMsg: 'Last Name is required'
         },
     },
     email: {
@@ -46,12 +44,13 @@ class SignUp extends React.Component {
         this.state = {
             checked: true,
             userData: {
-                firstName: '',
-                lastName: '',
+                fullName: '',
                 email: '',
                 password: ''
             },
-            errors: {}
+            errors: {},
+            keyboardAvoidEnable: false,
+            checked: false
         };
     }
     handleChangeText(key, event) {
@@ -68,7 +67,7 @@ class SignUp extends React.Component {
             return
         }
         let data = {
-            firstName: userData.firstName,
+            fullName: userData.fullName,
             lastName: userData.lastName,
             email: userData.email,
             password: userData.password,
@@ -76,7 +75,7 @@ class SignUp extends React.Component {
         this.props.dispatch(SignUpApi(data))
 
         //empty textBoxes
-        userData.firstName = ''
+        userData.fullName = ''
         userData.lastName = ''
         userData.email = ''
         userData.password = ''
@@ -84,65 +83,82 @@ class SignUp extends React.Component {
         this.props.navigation.navigate("ActivationCode")
     }
 
+    handleCheck() {
+        let { checked } = this.state
+        this.setState({ checked: !checked })
+    }
+
     render() {
-        let { userData, errors } = this.state
+        let { userData, errors, checked } = this.state
         return (
-            <View style={styles.fullScreen}>
-                <Header
-                    label="Signup"
-                    source={require('../../assets/back-btn.png')}
-                    navigation={this.props.navigation} />
-                <View style={styles.mainContainer}>
-                    <KeyboardAvoidingView
-                        behavior={Platform.OS == 'ios' ? 'position' : ''}
-                       >
-                        <View style={styles.formContainer}>
-                            <View style={styles.textBoxOut}>
-                                <TextBox
-                                    mode='outline'
-                                    placeholder="First Name"
-                                    onChangeText={this.handleChangeText.bind(this, 'firstName')}
-                                    value={userData.firstName}
-                                />
-                                <Text style={styles.errorMsgText}>{errors.firstName && errors.firstName[0]}</Text>
-                            </View>
-                            <View style={styles.textBoxOut}>
-                                <TextBox
-                                    mode='outline'
-                                    placeholder="Last Name"
-                                    onChangeText={this.handleChangeText.bind(this, 'lastName')}
-                                    value={userData.lastName}
-                                />
-                                <Text style={styles.errorMsgText}>{errors.lastName && errors.lastName[0]}</Text>
-                            </View>
-                            <View style={styles.textBoxOut}>
-                                <TextBox
-                                    mode='outline'
-                                    placeholder="Email"
-                                    onChangeText={this.handleChangeText.bind(this, 'email')}
-                                    value={userData.email}
-                                />
-                                <Text style={styles.errorMsgText}>{errors.email && errors.email[0]}</Text>
-                            </View>
-                            <View style={styles.textBoxOut}>
-                                <TextBox
-                                    mode='outline'
-                                    placeholder="Password"
-                                    secureTextEntry={true}
-                                    onChangeText={this.handleChangeText.bind(this, 'password')}
-                                    value={userData.password}
-                                />
-                                <Text style={styles.errorMsgText}>{errors.password && errors.password[0]}</Text>
-                            </View>
-                            <View style={styles.textBoxOut}>
-                                <Button dark={true} onPress={() => this.handleSubmit()} mode="contained">
-                                    SIGN UP
-                            </Button>
+            <ScrollView>
+                <View style={{ height: height }}>
+                    <BackgroundContent />
+                    <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation}/>
+                    <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : ''}>
+                        <View style={styles.mainContainer}>
+                            <BackgroundText textHeading="S I G N  U P" />
+                            <View style={styles.formContainer}>
+                                <View style={styles.textBoxOut}>
+                                    <TextBox
+                                        mode='outline'
+                                        placeholder="Full Name"
+                                        onChangeText={this.handleChangeText.bind(this, 'fullName')}
+                                        value={userData.fullName}
+                                        onFocus={() => this.setState({ keyboardAvoidEnable: false })}
+                                    />
+                                    <Text style={styles.errorMsgText}>{errors.fullName && errors.fullName[0]}</Text>
+                                </View>
+                                <View style={styles.textBoxOut}>
+                                    <TextBox
+                                        mode='outline'
+                                        placeholder="Email"
+                                        onChangeText={this.handleChangeText.bind(this, 'email')}
+                                        value={userData.email}
+                                        onFocus={() => this.setState({ keyboardAvoidEnable: true })}
+                                    />
+                                    <Text style={styles.errorMsgText}>{errors.email && errors.email[0]}</Text>
+                                </View>
+                                <View style={styles.textBoxOut}>
+                                    <TextBox
+                                        mode='outline'
+                                        placeholder="Password"
+                                        secureTextEntry={true}
+                                        onChangeText={this.handleChangeText.bind(this, 'password')}
+                                        value={userData.password}
+                                        onFocus={() => this.setState({ keyboardAvoidEnable: true })}
+                                    />
+                                    <Text style={styles.errorMsgText}>{errors.password && errors.password[0]}</Text>
+                                </View>
+                                <View style={styles.textOut}>
+                                    <Text style={styles.textMain}>Can we contact you with offers, events and our newsletter?</Text>
+                                    <View>
+                                        <CheckBox
+                                            checked={checked}
+                                            onPress={() => this.handleCheck()}
+                                            checkedColor={whiteColor}
+                                            checkedIcon="check-square"
+                                        />
+                                    </View>
+                                </View>
                             </View>
                         </View>
                     </KeyboardAvoidingView>
                 </View>
-            </View>
+                <View style={styles.buttonOut}>
+                    <ButtonMain
+                        onPress={() => this.handleSubmit()}
+                        isColored={false}
+                        label='C O N T I N U E'
+                    />
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles.textBottom}>Already signed up? </Text>
+                        <TouchableOpacity style={{ borderBottomColor: whiteColor, borderBottomWidth: 1 }} onPress={() => this.props.navigation.navigate('Login')}>
+                            <Text style={styles.textBottom}> Sign in here</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ScrollView>
         )
     }
 }
@@ -150,21 +166,82 @@ export default connect(state => state)(SignUp)
 
 const styles = StyleSheet.create({
     fullScreen: {
-        height: height
+        height: height,
+        width: width,
+        position: 'relative',
     },
     mainContainer: {
-        flex: 1,
+        marginTop: 52,
         alignItems: 'center',
-        justifyContent: 'center',
     },
     formContainer: {
-        width: width - 100,
+        marginTop: 25,
+        width: width - 70,
     },
     textBoxOut: {
-        marginTop: 20
+        marginTop: 5,
+    },
+    textOut: {
+        paddingTop: 5,
+        padding: 15,
+        paddingRight: 35,
+        flexDirection: 'row',
+        alignItems: 'center',
+        // justifyContent:'center',
+        position: 'relative'
+    },
+    textMain: {
+        color: whiteColor,
+        fontSize: fontMedium,
+    },
+    checkBoxStyle: {
+        position: 'absolute',
+        right: 10,
+        color: whiteColor,
+        borderColor: whiteColor
+    },
+    buttonOut: {
+        position: 'absolute',
+        bottom: 25,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     errorMsgText: {
         fontSize: fontSmall,
         color: errorColor
-    }
+    },
+
+    fullScreen: {
+        height: height,
+    },
+    mainCon: {
+        marginTop: 52,
+        alignItems: 'center',
+        position: "relative"
+    },
+    backImageOut: {
+        height: 110,
+        width: width,
+    },
+    logoMain: {
+        height: 25,
+        width: 135,
+        position: 'absolute',
+        top: '50%'
+    },
+
+    textHeading: {
+        color: whiteColor,
+        fontSize: fontXXL
+    },
+    textBottom: {
+        marginTop: 15,
+        color: whiteColor,
+        textAlign: 'center',
+    },
+    flexRow: {
+        flexDirection: "row"
+    },
+
 })

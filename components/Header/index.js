@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, Platform, SafeAreaView } from 'react-native';
+import { whiteColor, fontXL } from '../constant';
 
 class Header extends React.Component {
     
@@ -60,13 +61,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     label: {
-        fontSize: 15,
-        marginTop: 5
+        fontSize: fontXL,
+        marginTop: 5,
+        color:whiteColor,
+        marginLeft:10
     },
     headerMainView:{
+        position:'absolute',
+        top:0,
         zIndex:999,
-        backgroundColor:'#f2f2f2',
-        position: 'relative',
+        backgroundColor:'transparent',
     }
 });
 

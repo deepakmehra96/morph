@@ -1,0 +1,6 @@
+framework module Pods_morph {
+  umbrella header "Pods-morph-umbrella.h"
+
+  export *
+  module * { export * }
+}

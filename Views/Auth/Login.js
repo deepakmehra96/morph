@@ -3,12 +3,14 @@ import { View, Text, Dimensions, StyleSheet, TouchableOpacity, KeyboardAvoidingV
 import { connect } from 'react-redux'
 import microValidator from 'micro-validator'
 import is from 'is_js'
-import { fontSmall, errorColor } from '../../components/constant';
+import { fontSmall, errorColor, fontLarge, whiteColor } from '../../components/constant';
 import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
 import { Button } from 'react-native-paper';
 import ButtonMain from '../../components/ButtonMain';
 import { LoginApi } from '../../redux/actions';
+import BackgroundText from '../../components/BackgroundText';
+import BackgroundContent from '../../components/BackgroundContent';
 var { height, width } = Dimensions.get('window')
 
 let validationSchema = {
@@ -71,11 +73,12 @@ class Login extends React.Component {
         let { userData, errors } = this.state
         return (
             <View style={styles.fullScreen}>
-                <Header label="Login" />
+                <BackgroundContent />
                 <View style={styles.mainContainer}>
+                    <BackgroundText textHeading="S I G N  I N" />
                     <KeyboardAvoidingView
                         behavior={Platform.OS == 'ios' ? 'position' : ''}
-                        >
+                    >
                         <View style={styles.formContainer}>
                             <View style={styles.textBoxOut}>
                                 <TextBox
@@ -96,18 +99,22 @@ class Login extends React.Component {
                                 />
                                 <Text style={styles.errorMsgText}>{errors.password && errors.password[0]}</Text>
                             </View>
-                            <View style={styles.textBoxOut}>
-                                <ButtonMain
-                                    dark={true}
-                                    onPress={() => this.handleSubmit()}
-                                    mode="contained"
-                                    label={'login'} />
-                            </View>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')} style={styles.signUpTextOut}>
-                                <Text style={styles.signUpText}>Sign Up</Text>
-                            </TouchableOpacity>
+
                         </View>
                     </KeyboardAvoidingView>
+                </View>
+                <View style={styles.buttonOut}>
+                    <ButtonMain
+                        onPress={() => this.handleSubmit()}
+                        isColored={false}
+                        label='C O N T I N U E'
+                    />
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles.textBottom}>Not signed up yet?</Text>
+                        <TouchableOpacity style={{ borderBottomColor: whiteColor, borderBottomWidth: 1 }} onPress={() => this.props.navigation.navigate('SignUp')}>
+                            <Text style={styles.textBottom}>  Sign up here </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         )
@@ -117,21 +124,22 @@ export default connect(state => state)(Login)
 
 const styles = StyleSheet.create({
     fullScreen: {
-        height: height
+        height: height,
     },
     mainContainer: {
-        flex: 1,
+        marginTop: 52,
         alignItems: 'center',
-        justifyContent: 'center',
     },
     formContainer: {
-        width: width - 100,
+        width: width - 80,
+        height: height - 350,
+        justifyContent: 'center'
     },
     textBoxOut: {
-        marginTop: 20
+        marginTop: 25,
     },
     errorMsgText: {
-        fontSize: fontSmall,
+        fontSize: fontLarge,
         color: errorColor
     },
     signUpTextOut: {
@@ -140,5 +148,17 @@ const styles = StyleSheet.create({
     },
     signUpText: {
         color: 'blue'
+    },
+    buttonOut: {
+        position: 'absolute',
+        bottom: 25,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    textBottom: {
+        marginTop: 15,
+        color: whiteColor,
+        textAlign: 'center',
     }
 })
