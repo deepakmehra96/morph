@@ -1,11 +1,32 @@
 import React from 'react'
 import { Image, View, StyleSheet } from 'react-native'
-import { createStackNavigator, createBottomTabNavigator } from "react-navigation"
-
+import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from "react-navigation"
 import Main from '../Main';
 import Bookings from '../Bookings';
 import Favourite from '../Favourite';
 import Accounts from '../Accounts';
+import UserLocation from '../Accounts/UserLocation';
+import UserCredits from '../Accounts/UserCredits';
+import UserNotes from '../Accounts/UserNotes';
+import UserPayment from '../Accounts/UserPayment';
+
+const AccountsStack = createStackNavigator({
+    Accounts: {
+        screen: Accounts,
+    },
+    UserLocation: {
+        screen: UserLocation,
+    },
+    UserCredits: {
+        screen: UserCredits,
+    },
+    UserLocation: {
+        screen: UserNotes,
+    },
+    UserLocation: {
+        screen: UserPayment,
+    },
+  });
 
 const TabIcon = ({ activeImage, style }) => {
     let icon = activeImage
@@ -16,10 +37,7 @@ const TabIcon = ({ activeImage, style }) => {
         </View>)
 }
 
-
-
 const Tabs = createBottomTabNavigator({
-
     Home: {
         screen: Main,
         navigationOptions: {
@@ -31,7 +49,7 @@ const Tabs = createBottomTabNavigator({
             />
         }
     },
-    Search: {
+    Bookings: {
         screen: Bookings,
         navigationOptions: {
             title: '',
@@ -42,7 +60,7 @@ const Tabs = createBottomTabNavigator({
             />
         }
     },
-    Support: {
+    Favourite: {
         screen: Favourite,
         navigationOptions: {
             title: '',
@@ -53,31 +71,37 @@ const Tabs = createBottomTabNavigator({
             />
         }
     },
-    Profile: {
-        screen: Accounts,
+    Setting: {
+        screen: AccountsStack,
         navigationOptions: {
             title: '',
             tabBarIcon: props => <TabIcon
+                {...props}
                 activeImage={require('../../assets/account.png')}
                 style={styles.iconMenu}
             />
-        }
-    }
+        },
+    },
 }, {
         tabBarOptions: {
             style: {
                 height: 60,
                 paddingTop: 20,
-                backgroundColor: '#4d32b0'
+                backgroundColor: '#4d32b0',
             },
         }
     });
 
-const LoggedinTabs = createStackNavigator({ LoggedinTabs: Tabs }, { headerMode: true })
+const LoggedinTabs = createStackNavigator({ 
+    LoggedinTabs: Tabs,
+}, { headerMode: true })
+
 
 LoggedinTabs.navigationOptions = {
     header: null
 }
+
+
 export default LoggedinTabs
 
 const styles = StyleSheet.create({

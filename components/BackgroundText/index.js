@@ -7,14 +7,14 @@ const BackgroundText = props => {
     return (
         <View style={styles.mainCon}>
             <View style={styles.backImageOut}>
-                <Image resizeMode="contain" style={styles.imageMain} source={require('../../assets/LogoMain.png')} />
+                <Image resizeMode="stretch" style={styles.imageMain} source={require('../../assets/LogoMain.png')} />
             </View>
             <View style={[styles.textConatiner, props.textConatiner]}>
                 {
-                    props.showImage ? 
-                    <View style={styles.logoMain}>
-                        <Image resizeMode="stretch" style={styles.imageMain} source={require('../../assets/LogoWhite.png')} />
-                    </View> : null
+                    props.showImage ?
+                        <View style={styles.logoMain}>
+                            <Image resizeMode="stretch" style={styles.imageMain} source={require('../../assets/LogoWhite.png')} />
+                        </View> : null
                 }
                 <View>
                     <Text style={styles.textHeading}>{props.textHeading}</Text>
@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     textHeading: {
-        marginTop:30,
+        marginTop: 30,
         color: whiteColor,
         fontSize: fontXXL
     },
-    textConatiner:{ 
+    textConatiner: {
         position: 'absolute',
-        top: '50%',  
+        top: '50%',
         alignItems: 'center',
     }
 })

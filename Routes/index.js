@@ -8,6 +8,12 @@ import SliderScreens from "../Views/Slider";
 import Location from "../Views/Location";
 import ConfirmLocation from "../Views/Location/ConfirmLocation";
 import LoggedinTabs from "../Views/FooterTab.js";
+import Accounts from "../Views/Accounts";
+import ListItem from "../components/ListItem.js";
+import UserLocation from '../Views/Accounts/UserLocation'
+import UserNotes from "../Views/Accounts/UserNotes";
+import UserPayment from '../Views/Accounts/UserPayment'
+import UserCredits from "../Views/Accounts/UserCredits";
 
 const AppNavigator = createStackNavigator(
     {
@@ -19,7 +25,13 @@ const AppNavigator = createStackNavigator(
       Header:Header,
       Location: Location,
       ConfirmLocation: ConfirmLocation,
-      LoggedinTabs: LoggedinTabs
+      LoggedinTabs: LoggedinTabs,
+      Accounts:Accounts,
+      ListItem:ListItem,
+      UserLocation:UserLocation,
+      UserNotes:UserNotes,
+      UserPayment: UserPayment,
+      UserCredits: UserCredits
     },
     {
       initialRouteName: "LoggedinTabs",

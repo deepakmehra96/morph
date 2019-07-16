@@ -134,6 +134,6 @@ const styles = StyleSheet.create({
     },
     groupMain: {
         height: 12,
-        width: 14
+        width: 18
     }
 })
