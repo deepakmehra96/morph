@@ -3,7 +3,7 @@ import { View, Text, Dimensions, StyleSheet, TouchableOpacity, KeyboardAvoidingV
 import { connect } from 'react-redux'
 import microValidator from 'micro-validator'
 import is from 'is_js'
-import { fontSmall, errorColor, fontLarge, whiteColor } from '../../components/constant';
+import { fontSmall, errorColor, fontLarge, whiteColor, fontMedium } from '../../components/constant';
 import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
 import { Button } from 'react-native-paper';
@@ -65,8 +65,9 @@ class Login extends React.Component {
 
         //empty textBoxes
         userData.email = '',
-            userData.password = '',
-            this.setState({ userData })
+        userData.password = '',
+        this.setState({ userData })
+        this.props.navigation.navigate("LoggedinTabs")
     }
 
     render() {
@@ -75,7 +76,7 @@ class Login extends React.Component {
             <View style={styles.fullScreen}>
                 <BackgroundContent />
                 <View style={styles.mainContainer}>
-                    <BackgroundText textHeading="S I G N  I N" />
+                    <BackgroundText showImage={true} textHeading="SIGN IN" />
                     <KeyboardAvoidingView
                         behavior={Platform.OS == 'ios' ? 'position' : ''}
                     >
@@ -86,6 +87,8 @@ class Login extends React.Component {
                                     placeholder="Email"
                                     onChangeText={this.handleChange.bind(this, 'email')}
                                     value={userData.email}
+                                    rightIcon={require('../../assets/email.png')}
+                                    iconStylesProps={styles.emailIcon}
                                 />
                                 <Text style={styles.errorMsgText}>{errors.email && errors.email[0]}</Text>
                             </View>
@@ -96,6 +99,8 @@ class Login extends React.Component {
                                     secureTextEntry={true}
                                     onChangeText={this.handleChange.bind(this, 'password')}
                                     value={userData.password}
+                                    rightIcon={require('../../assets/lock.png')}
+                                    password={true}
                                 />
                                 <Text style={styles.errorMsgText}>{errors.password && errors.password[0]}</Text>
                             </View>
@@ -107,7 +112,7 @@ class Login extends React.Component {
                     <ButtonMain
                         onPress={() => this.handleSubmit()}
                         isColored={false}
-                        label='C O N T I N U E'
+                        label='CONTINUE'
                     />
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textBottom}>Not signed up yet?</Text>
@@ -159,6 +164,11 @@ const styles = StyleSheet.create({
     textBottom: {
         marginTop: 15,
         color: whiteColor,
+        fontSize:fontMedium ,
         textAlign: 'center',
+    },
+    emailIcon:{
+        height:13,
+        width:15
     }
 })

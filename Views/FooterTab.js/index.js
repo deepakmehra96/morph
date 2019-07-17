@@ -20,10 +20,10 @@ const AccountsStack = createStackNavigator({
     UserCredits: {
         screen: UserCredits,
     },
-    UserLocation: {
+    UserNotes: {
         screen: UserNotes,
     },
-    UserLocation: {
+    UserPayment: {
         screen: UserPayment,
     },
   });

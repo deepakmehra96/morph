@@ -11,6 +11,7 @@ import ButtonMain from '../../components/ButtonMain';
 import BackgroundContent from '../../components/BackgroundContent';
 import BackgroundText from '../../components/BackgroundText';
 import { CheckBox } from 'react-native-elements'
+import MapMain from '../Map';
 var { height, width } = Dimensions.get('window')
 
 
@@ -83,7 +84,7 @@ class ConfirmLocation extends React.Component {
         userData.street = ''
         userData.town = ''
         this.setState({ userData })
-        this.props.navigation.navigate("ActivationCode")
+        this.props.navigation.navigate("LoggedinTabs")
     }
 
     handleCheck() {
@@ -98,11 +99,14 @@ class ConfirmLocation extends React.Component {
                 <View style={{ height: height }}>
                     <BackgroundContent />
                     <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : ''}>
-                    <Header  label="C O N F I R M   L O C A T I O N" source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation}/>
+                    <Header  label="CONFIRM LOCATION" source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation}/>
                         <View style={styles.mainContainer}>
                             <BackgroundText textConatiner={{ opacity: 0}}/>
                             <View style={{position:"absolute", top:52}}>
-                                <Image source={require('../../assets/map.png')} style={{ height : 180, width:width}}/> 
+                                <View style={{height:180, width:width, zIndex:999}}>
+                                    <MapMain />
+                                </View>
+                                {/* <Image source={require('../../assets/map.png')} style={{ height : 180, width:width}}/>  */}
                             </View>
                             <View style={styles.formContainer}>
                                 <View style={styles.textBoxOut}>
@@ -155,7 +159,7 @@ class ConfirmLocation extends React.Component {
                     <ButtonMain
                         onPress={() => this.handleSubmit()}
                         isColored={false}
-                        label='C O N T I N U E'
+                        label='CONTINUE'
                     />
                 </View>
             </ScrollView>

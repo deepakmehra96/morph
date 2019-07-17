@@ -97,7 +97,7 @@ class SignUp extends React.Component {
                     <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation}/>
                     <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : ''}>
                         <View style={styles.mainContainer}>
-                            <BackgroundText textHeading="S I G N  U P" />
+                            <BackgroundText textHeading="SIGN UP" />
                             <View style={styles.formContainer}>
                                 <View style={styles.textBoxOut}>
                                     <TextBox
@@ -106,6 +106,7 @@ class SignUp extends React.Component {
                                         onChangeText={this.handleChangeText.bind(this, 'fullName')}
                                         value={userData.fullName}
                                         onFocus={() => this.setState({ keyboardAvoidEnable: false })}
+                                        rightIcon={require('../../assets/person.png')}
                                     />
                                     <Text style={styles.errorMsgText}>{errors.fullName && errors.fullName[0]}</Text>
                                 </View>
@@ -116,6 +117,8 @@ class SignUp extends React.Component {
                                         onChangeText={this.handleChangeText.bind(this, 'email')}
                                         value={userData.email}
                                         onFocus={() => this.setState({ keyboardAvoidEnable: true })}
+                                        rightIcon={require('../../assets/email.png')}
+                                        iconStylesProps={styles.emailIcon}
                                     />
                                     <Text style={styles.errorMsgText}>{errors.email && errors.email[0]}</Text>
                                 </View>
@@ -126,7 +129,10 @@ class SignUp extends React.Component {
                                         secureTextEntry={true}
                                         onChangeText={this.handleChangeText.bind(this, 'password')}
                                         value={userData.password}
+                                        secureTextEntry={true}
                                         onFocus={() => this.setState({ keyboardAvoidEnable: true })}
+                                        rightIcon={require('../../assets/lock.png')}
+                                        password={true}
                                     />
                                     <Text style={styles.errorMsgText}>{errors.password && errors.password[0]}</Text>
                                 </View>
@@ -149,7 +155,7 @@ class SignUp extends React.Component {
                     <ButtonMain
                         onPress={() => this.handleSubmit()}
                         isColored={false}
-                        label='C O N T I N U E'
+                        label='CONTINUE'
                     />
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textBottom}>Already signed up? </Text>
@@ -239,9 +245,14 @@ const styles = StyleSheet.create({
         marginTop: 15,
         color: whiteColor,
         textAlign: 'center',
+        fontSize:fontMedium
     },
     flexRow: {
         flexDirection: "row"
     },
+    emailIcon:{
+        height:13,
+        width:15
+    }
 
 })

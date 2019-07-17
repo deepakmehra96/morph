@@ -14,6 +14,7 @@ import UserLocation from '../Views/Accounts/UserLocation'
 import UserNotes from "../Views/Accounts/UserNotes";
 import UserPayment from '../Views/Accounts/UserPayment'
 import UserCredits from "../Views/Accounts/UserCredits";
+import MapMain from "../Views/Map";
 
 const AppNavigator = createStackNavigator(
     {
@@ -31,10 +32,11 @@ const AppNavigator = createStackNavigator(
       UserLocation:UserLocation,
       UserNotes:UserNotes,
       UserPayment: UserPayment,
-      UserCredits: UserCredits
+      UserCredits: UserCredits,
+      MapMain:MapMain
     },
     {
-      initialRouteName: "LoggedinTabs",
+      initialRouteName: "ConfirmLocation",
       defaultNavigationOptions: {
         gesturesEnabled: false
       },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
-import { fontXL, whiteColor, fontLarge } from '../constant';
+import { fontXL, whiteColor, fontLarge, fontMedium, fontSmall } from '../constant';
 
 const ListItem = props => {
     return (
@@ -10,8 +10,13 @@ const ListItem = props => {
             </View>
             <View style={styles.textOutMain}>
                 <Text style={styles.textMain}>{props.heading}</Text>
+                {props.bottomText ?
+                    <Text  style={styles.textBottom}>
+                        {props.bottomText}
+                    </Text> : null}
             </View>
-            <View style={styles.backArrow}>
+
+            <View style={[styles.backArrow, props.iconRightStyle]}>
                 <Image style={styles.imageMain} source={props.iconRight} />
             </View>
         </View>
@@ -26,13 +31,13 @@ const styles = StyleSheet.create({
         height: 80,
         alignItems: 'center',
         flexDirection: 'row',
-        paddingLeft:60
+        paddingLeft: 90
     },
     iconOut: {
         height: 28,
         width: 20,
-        position:"absolute",
-        left:25,
+        position: "absolute",
+        left: 25,
     },
     imageMain: {
         height: '100%',
@@ -43,10 +48,16 @@ const styles = StyleSheet.create({
     },
     textMain: {
         color: '#A1A1A1',
-        marginLeft: 30,
         fontSize: fontXL,
         letterSpacing: 2,
         fontWeight: '600'
+    },
+    textBottom:{
+        color: '#A1A1A1',
+        fontSize: fontSmall,
+        letterSpacing: 2,
+        fontWeight: '600',
+        marginTop:5
     },
     backArrow: {
         height: 18,

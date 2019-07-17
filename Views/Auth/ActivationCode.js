@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Dimensions,TouchableOpacity } from 'react-nativ
 import { connect } from 'react-redux'
 import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
-import { fontSmall, errorColor, whiteColor } from '../../components/constant';
+import { fontSmall, errorColor, whiteColor, fontMedium } from '../../components/constant';
 import { ActivationCodeApi } from '../../redux/actions';
 import ButtonMain from '../../components/ButtonMain';
 import BackgroundContent from '../../components/BackgroundContent';
@@ -48,7 +48,7 @@ class ActivationCode extends React.Component {
                 <BackgroundContent />
                 <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
                 <View style={styles.mainContainer}>
-                    <BackgroundText textHeading="A C T I V A T E" />
+                    <BackgroundText showImage={true} textHeading="ACTIVATE" />
                     <View style={styles.formContainer}>
                         <View style={styles.textBoxOut}>
                             <TextBox
@@ -65,7 +65,7 @@ class ActivationCode extends React.Component {
                     <ButtonMain
                         onPress={() => this.handleSubmit()}
                         isColored={false}
-                        label='C O N T I N U E'
+                        label='CONTINUE'
                     />
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textBottom}>Didn’t receive the code? </Text>
@@ -110,5 +110,6 @@ const styles = StyleSheet.create({
         marginTop: 15,
         color: whiteColor,
         textAlign: 'center',
+        fontSize:fontMedium
     },
 })

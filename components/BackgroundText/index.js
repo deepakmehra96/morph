@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     textHeading: {
         marginTop: 30,
         color: whiteColor,
-        fontSize: fontXXL
+        fontSize: fontXXL,
+        letterSpacing:6
     },
     textConatiner: {
         position: 'absolute',

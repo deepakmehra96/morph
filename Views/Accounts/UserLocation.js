@@ -29,28 +29,38 @@ class UserLocation extends React.Component {
                 <BackgroundContent />
                 <View style={styles.upperCon}>
                     <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation}/>
-                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="Location" />
+                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="LOCATION" />
                 </View>
                 <View style={styles.mainContainer}>
                     <View style={styles.innerContainer}>
                         <ScrollView>
-                            <TouchableOpacity>
-                                <ListItem
-                                    listStyle={styles.listStyle}
-                                    heading="Home"
-                                />
-                            </TouchableOpacity>
+                            <ListItem
+                                listStyle={styles.listStyle}
+                                heading="Home" 
+                                bottomText="10 Down Street"
+                                iconRight={require('../../assets/delete.png')}
+                                iconRightStyle={styles.iconRight}
+                            />
                             <ListItem
                                 listStyle={styles.listStyle}
                                 heading="Work"
+                                bottomText="10 Down Street"
+                                iconRight={require('../../assets/delete.png')}
+                                iconRightStyle={styles.iconRight}
                             />
                             <ListItem
                                 listStyle={styles.listStyle}
                                 heading="Parent"
+                                bottomText="10 Down Street"
+                                iconRight={require('../../assets/delete.png')}
+                                iconRightStyle={styles.iconRight}
                             />
                             <ListItem
                                 listStyle={styles.listStyle}
                                 heading="New Loaction..."
+                                bottomText="10 Down Street"
+                                iconRight={require('../../assets/plus.png')}
+                                iconRightStyle={styles.iconRightPlus}
                             />
                         </ScrollView>
                     </View>
@@ -77,6 +87,14 @@ const styles = StyleSheet.create({
         height: height - 50
     },
     listStyle:{
-        paddingLeft:20
+        paddingLeft:40
+    },
+    iconRight:{
+        width:16,
+        height:20
+    },
+    iconRightPlus:{
+        width:20,
+        height:20
     }
 })

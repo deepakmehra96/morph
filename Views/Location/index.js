@@ -30,13 +30,13 @@ class Location extends React.Component {
 
     handleSubmit() {
         let { location } = this.state
-        if (location.length == 0) {
-            this.setState({ errors: 'location is required' })
-            return
-        }
+        // if (location.length == 0) {
+        //     this.setState({ errors: 'location is required' })
+        //     return
+        // }
         location = ''
         this.setState({ location })
-        this.props.navigation.navigate('Login')
+        this.props.navigation.navigate('ConfirmLocation')
     }
 
     render() {
@@ -44,9 +44,8 @@ class Location extends React.Component {
         return (
             <View style={styles.fullScreen}>
                 <BackgroundContent />
-                <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
                 <View style={styles.mainContainer}>
-                    <BackgroundText textHeading="L O C A T I O N" />
+                    <BackgroundText showImage={true} textHeading="LOCATION" />
                     <Text style={styles.textBottom}>Find the default location you wish to exercise</Text>
                     <View style={styles.formContainer}>
                         <View style={styles.textBoxOut}>
@@ -72,7 +71,6 @@ class Location extends React.Component {
                         </View>
                     </View>
                 </View>
-             
             </View>
         )
     }
@@ -105,7 +103,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textBottom: {
-        marginTop: 15,
+        marginTop: 45,
         color: whiteColor,
         textAlign: 'center',
         fontSize:fontMedium,

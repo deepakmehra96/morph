@@ -134,7 +134,6 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-linear-gradient')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-material-kit')
     implementation project(':react-native-maps')

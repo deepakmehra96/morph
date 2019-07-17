@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, SafeAreaView, Image, ScrollView, ImageBackground } from 'react-native';
 import { connect } from 'react-redux'
 // import LinearGradient from 'react-native-linear-gradient';
 import { fontMedium, fontLarge, whiteColor, fontXXL, fontXL, fontSmall } from '../../components/constant';
@@ -33,7 +33,7 @@ class Main extends React.Component {
                         <View style={styles.listOut}>
                             {data.map((val, index) => {
                                 return (
-                                    <View key={index} style={styles.listView}>
+                                    <ImageBackground source={require('../../assets/gradient.png')} key={index} style={styles.listView}>
                                         <View style={styles.textOutMain}>
                                             <Text style={styles.exerciseHeading}>
                                                 {val.title}
@@ -52,7 +52,7 @@ class Main extends React.Component {
                                                 <Image style={styles.imageMain} source={require('../../assets/exercise.png')} />
                                             </View>
                                         </View>
-                                    </View>
+                                    </ImageBackground>
                                 )
                             })}
                         </View>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     },
     listView: {
         height: 100,
-        backgroundColor: "#743ecf",
+        // backgroundColor: "#743ecf",
         alignItems: 'center',
         flexDirection: 'row',
         marginTop: 15

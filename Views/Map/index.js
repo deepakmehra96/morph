@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet, View, Dimensions } from 'react-native';
+import { Platform, StyleSheet, View, Dimensions, Text } from 'react-native';
 import SignUp from '../Auth/Signup';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 let { width, height } = Dimensions.get('window');
@@ -10,7 +10,7 @@ const LONGITUDE = 0;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-class Map extends React.Component {
+class MapMain extends React.Component {
   static navigationOptions = {
     header: null
   }
@@ -61,65 +61,65 @@ class Map extends React.Component {
     let { region } = this.state
     console.log(region, "currentLatitude currentLatitude")
     return (
-      <View style={styles.container}>
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          mapType={Platform.OS == "android" ? "none" : "standard"}
-          // customMapStyle={[
-          //   {
-          //     "featureType": "poi",
-          //     "elementType": "labels.text",
-          //     "stylers": [
-          //       {
-          //         "visibility": "off"
-          //       }
-          //     ]
-          //   },
-          //   {
-          //     "featureType": "poi.business",
-          //     "stylers": [
-          //       {
-          //         "visibility": "off"
-          //       }
-          //     ]
-          //   },
-          //   {
-          //     "featureType": "road",
-          //     "elementType": "labels.icon",
-          //     "stylers": [
-          //       {
-          //         "visibility": "off"
-          //       }
-          //     ]
-          //   },
-          //   {
-          //     "featureType": "transit",
-          //     "stylers": [
-          //       {
-          //         "visibility": "off"
-          //       }
-          //     ]
-          //   }
-          // ]}
-          // showsUserLocation={ true }
-          region={this.state.region}
-        onRegionChange={ region => this.setState({region}) }
-        onRegionChangeComplete={ region => this.setState({region}) }
-        >
-          <MapView.Marker
-                coordinate={ this.state.region }
-                />
-        </MapView>
-      </View>
+      <MapView
+        style={{ height: '100%', width: '100%' }}
+        // provider={PROVIDER_GOOGLE}
+        // mapType={Platform.OS == "android" ? "none" : "standard"}
+        // customMapStyle={[
+        //   {
+        //     "featureType": "poi",
+        //     "elementType": "labels.text",
+        //     "stylers": [
+        //       {
+        //         "visibility": "off"
+        //       }
+        //     ]
+        //   },
+        //   {
+        //     "featureType": "poi.business",
+        //     "stylers": [
+        //       {
+        //         "visibility": "off"
+        //       }
+        //     ]
+        //   },
+        //   {
+        //     "featureType": "road",
+        //     "elementType": "labels.icon",
+        //     "stylers": [
+        //       {
+        //         "visibility": "off"
+        //       }
+        //     ]
+        //   },
+        //   {
+        //     "featureType": "transit",
+        //     "stylers": [
+        //       {
+        //         "visibility": "off"
+        //       }
+        //     ]
+        //   }
+        // ]}
+        // showsUserLocation={ true }
+        region={this.state.region}
+        onRegionChange={region => this.setState({ region })}
+        onRegionChangeComplete={region => this.setState({ region })}
+      >
+        <MapView.Marker
+          coordinate={this.state.region}
+        />
+      </MapView>
     )
   }
 }
-export default Map
+export default MapMain
 
 
 const styles = StyleSheet.create({
   container: {
-    height: 400,
-    width: 200,
-  }
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    flex: 1,
+  },
 });

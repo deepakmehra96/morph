@@ -20,13 +20,16 @@ export default ButtonMain;
 const styles = StyleSheet.create({
     textColor:{ 
         color: whiteColor, 
+        letterSpacing:5
     },
     buttonTransparent:{
         backgroundColor:"transparent",
         borderColor:whiteColor,
         borderWidth:1,
         borderRadius:20,
-        width:width-80
+        width:width-80,
+        height:40,
+        justifyContent:'center'
     },
     buttonColored:{
         backgroundColor:"red",

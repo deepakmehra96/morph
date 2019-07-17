@@ -22,14 +22,23 @@ class Accounts extends React.Component {
     }
 
     handleLocation() {
+        console.log(1)
         this.props.navigation.navigate("UserLocation")
+    }
+    handlePayment(){
+        console.log(2)
+        this.props.navigation.navigate("UserPayment")
+    }
+    handleCredits(){
+        console.log(3)
+        this.props.navigation.navigate("UserCredits")
     }
     render() {
         return (
             <SafeAreaView style={styles.fullScreen}>
                 <BackgroundContent />
                 <View style={styles.upperCon}>
-                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="A C C O U N T   &   S E T T I N G" />
+                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="ACCOUNT & SETTING" />
                 </View>
                 <View style={styles.mainContainer}>
                     <View style={styles.innerContainer}>
@@ -50,7 +59,7 @@ class Accounts extends React.Component {
                                     iconRight={require('../../assets/arrow.png')}
                                 />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => this.handleCard()}>
+                            <TouchableOpacity onPress={() => this.handleCredits()}>
                                 <ListItem
                                     heading="Credits"
                                     iconLeftStyle={styles.iconOutCredits}
