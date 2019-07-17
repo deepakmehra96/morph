@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
         fontSize: fontXL,
         marginTop: 5,
         color:whiteColor,
-        marginLeft:10
+        marginLeft:10,
+        letterSpacing:4
     },
     headerMainView:{
         position:'absolute',

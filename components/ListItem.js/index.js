@@ -15,7 +15,6 @@ const ListItem = props => {
                         {props.bottomText}
                     </Text> : null}
             </View>
-
             <View style={[styles.backArrow, props.iconRightStyle]}>
                 <Image style={styles.imageMain} source={props.iconRight} />
             </View>
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
     listMain: {
         borderBottomWidth: 1,
         borderColor: '#E5E5E5',
-        height: 80,
+        height: 70,
         alignItems: 'center',
         flexDirection: 'row',
         paddingLeft: 90

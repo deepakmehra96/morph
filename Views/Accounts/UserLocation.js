@@ -1,17 +1,10 @@
 import React from 'react';
 import { View, Image, Dimensions, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
-import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from "react-navigation"
 import BackgroundText from '../../components/BackgroundText';
 import BackgroundContent from '../../components/BackgroundContent';
 import Header from '../../components/Header';
-import { whiteColor, fontXL } from '../../components/constant';
 import ListItem from '../../components/ListItem.js';
-import LoggedinTabs from '../FooterTab.js';
-import Main from '../Main';
-import Bookings from '../Bookings';
-import Favourite from '../Favourite';
-import Accounts from '.';
 var { height, width } = Dimensions.get('window')
 
 class UserLocation extends React.Component {

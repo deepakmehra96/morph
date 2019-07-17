@@ -9,38 +9,38 @@ import Location from "../Views/Location";
 import ConfirmLocation from "../Views/Location/ConfirmLocation";
 import LoggedinTabs from "../Views/FooterTab.js";
 import Accounts from "../Views/Accounts";
-import ListItem from "../components/ListItem.js";
 import UserLocation from '../Views/Accounts/UserLocation'
 import UserNotes from "../Views/Accounts/UserNotes";
 import UserPayment from '../Views/Accounts/UserPayment'
 import UserCredits from "../Views/Accounts/UserCredits";
 import MapMain from "../Views/Map";
+import ManageBooking from "../Views/Bookings/ManageBooking";
 
 const AppNavigator = createStackNavigator(
-    {
-      SliderScreens:SliderScreens,
-      Login: Login,
-      SignUp: SignUp,
-      ActivationCode: ActivationCode,
-      Dashboard: Dashboard,
-      Header:Header,
-      Location: Location,
-      ConfirmLocation: ConfirmLocation,
-      LoggedinTabs: LoggedinTabs,
-      Accounts:Accounts,
-      ListItem:ListItem,
-      UserLocation:UserLocation,
-      UserNotes:UserNotes,
-      UserPayment: UserPayment,
-      UserCredits: UserCredits,
-      MapMain:MapMain
+  {
+    SliderScreens: SliderScreens,
+    LoggedinTabs: LoggedinTabs,
+    Login: Login,
+    SignUp: SignUp,
+    ActivationCode: ActivationCode,
+    Dashboard: Dashboard,
+    Header: Header,
+    Location: Location,
+    ConfirmLocation: ConfirmLocation,
+    Accounts: Accounts,
+    UserLocation: UserLocation,
+    UserNotes: UserNotes,
+    UserPayment: UserPayment,
+    UserCredits: UserCredits,
+    MapMain: MapMain,
+    ManageBooking: ManageBooking
+  },
+  {
+    initialRouteName: "ConfirmLocation",
+    defaultNavigationOptions: {
+      gesturesEnabled: false
     },
-    {
-      initialRouteName: "ConfirmLocation",
-      defaultNavigationOptions: {
-        gesturesEnabled: false
-      },
-    }
+  }
 );
 
 const Router = createAppContainer(AppNavigator);

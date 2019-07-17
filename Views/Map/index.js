@@ -1,7 +1,6 @@
 import React from 'react';
 import { Platform, StyleSheet, View, Dimensions, Text } from 'react-native';
-import SignUp from '../Auth/Signup';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker, AnimatedRegion } from 'react-native-maps';
 let { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
@@ -21,7 +20,7 @@ class MapMain extends React.Component {
         latitude: LATITUDE,
         longitude: LONGITUDE,
         latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA * ASPECT_RATIO,
       }
     };
   }
@@ -59,55 +58,31 @@ class MapMain extends React.Component {
 
   render() {
     let { region } = this.state
-    console.log(region, "currentLatitude currentLatitude")
+    // console.log(region, "currentLatitude currentLatitude")
     return (
       <MapView
         style={{ height: '100%', width: '100%' }}
-        // provider={PROVIDER_GOOGLE}
-        // mapType={Platform.OS == "android" ? "none" : "standard"}
-        // customMapStyle={[
-        //   {
-        //     "featureType": "poi",
-        //     "elementType": "labels.text",
-        //     "stylers": [
-        //       {
-        //         "visibility": "off"
-        //       }
-        //     ]
-        //   },
-        //   {
-        //     "featureType": "poi.business",
-        //     "stylers": [
-        //       {
-        //         "visibility": "off"
-        //       }
-        //     ]
-        //   },
-        //   {
-        //     "featureType": "road",
-        //     "elementType": "labels.icon",
-        //     "stylers": [
-        //       {
-        //         "visibility": "off"
-        //       }
-        //     ]
-        //   },
-        //   {
-        //     "featureType": "transit",
-        //     "stylers": [
-        //       {
-        //         "visibility": "off"
-        //       }
-        //     ]
-        //   }
-        // ]}
-        // showsUserLocation={ true }
         region={this.state.region}
-        onRegionChange={region => this.setState({ region })}
-        onRegionChangeComplete={region => this.setState({ region })}
+        // onRegionChange={region => this.setState({ region })}
+        // onRegionChangeComplete={region => this.setState({ region })}
+        zoomControlEnabled={true}
+        zoomTapEnabled={true}
+        zoomEnabled={true}
+        scrollEnabled={true}
+        draggable={true}
+        showsUserLocation={true}
+        followsUserLocation={true}
+        showsMyLocationButton={true}
+        showsPointsOfInterest={true}
+        showsCompass={true}
+        loadingEnabled={true}
+        toolbarEnabled={true}
+        rotateEnabled={true}
+        myLocationButton={true}
       >
-        <MapView.Marker
+         <MapView.Marker
           coordinate={this.state.region}
+          title="My Location"
         />
       </MapView>
     )
