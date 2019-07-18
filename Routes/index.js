@@ -18,6 +18,9 @@ import ManageBooking from "../Views/Bookings/ManageBooking";
 import ExerciseView from '../Views/ExerciseBooking/Exercise'
 import Options from "../Views/ExerciseBooking/Options";
 import BookingTime from "../Views/ExerciseBooking/BookingTime";
+import BookTrainer from "../Views/ExerciseBooking/BookTrainer";
+import TrainerProfile from "../Views/ExerciseBooking/TrainerProfile";
+import ConfirmPage from "../Views/ExerciseBooking/ConfirmPage";
 
 const AppNavigator = createStackNavigator(
   {
@@ -39,10 +42,13 @@ const AppNavigator = createStackNavigator(
     ManageBooking: ManageBooking,
     ExerciseView:ExerciseView,
     Options:Options,
-    BookingTime:BookingTime
+    BookingTime:BookingTime,
+    BookTrainer:BookTrainer,
+    TrainerProfile:TrainerProfile,
+    ConfirmPage:ConfirmPage
   },
   {
-    initialRouteName: "LoggedinTabs",
+    initialRouteName: "ConfirmPage",
     defaultNavigationOptions: {
       gesturesEnabled: false
     },

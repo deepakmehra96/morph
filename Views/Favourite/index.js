@@ -42,7 +42,7 @@ class Favorite extends React.Component {
             <SafeAreaView style={styles.fullScreen}>
                 <BackgroundContent />
                 <View style={styles.upperCon}>
-                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="BOOKING" />
+                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="FAVOURITES" />
                 </View>
                 <View style={styles.mainContainer}>
                     <View style={styles.innerContainer}>

@@ -12,11 +12,14 @@ const ProfileBackground = props => {
             <View style={{position:'absolute', top:'20%'}}>
                 <Text style={styles.textHeading}>{props.textHeading}</Text>
             </View>
-            { props.imageMain ? 
-            <View style={{height:110,width:110, borderRadius:60, overflow:'hidden', borderWidth:2, borderColor:whiteColor, position:'absolute', top:70}}>
-                <Image style={styles.imageMain} source={props.imageMain} />
-            </View>
-            :null}
+            { 
+                props.imageMain ? 
+                    <View style={{height:110,width:110, borderRadius:60, overflow:'hidden', borderWidth:2, borderColor:whiteColor, position:'absolute', top:70}}>
+                        <Image style={styles.imageMain} source={props.imageMain} />
+                    </View>
+                :
+                null
+            }
             
             <View style={styles.contentOut}>
                 {props.content}
@@ -29,7 +32,6 @@ export default ProfileBackground
 
 const styles = StyleSheet.create({
     fullScreen: {
-        // position:'absolute',
         width:width,
         zIndex:-1,
         height: height/2,

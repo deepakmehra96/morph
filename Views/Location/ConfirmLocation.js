@@ -44,7 +44,6 @@ class ConfirmLocation extends React.Component {
     constructor() {
         super()
         this.state = {
-            checked: true,
             userData: {
                 number: '',
                 street: '',
@@ -53,7 +52,6 @@ class ConfirmLocation extends React.Component {
             },
             errors: {},
             keyboardAvoidEnable: false,
-            checked: false,
             setDropDown: false,
             loactionArray: [{ data: '10 Downing Street, London, W1 ABC' },
             { data: '1 Belmont Road, London, SW4 00X' },
@@ -93,14 +91,8 @@ class ConfirmLocation extends React.Component {
         this.props.navigation.navigate("LoggedinTabs")
     }
 
-    handleCheck() {
-        let { checked } = this.state
-        this.setState({ checked: !checked })
-    }
-
     handleDropDownSelect() {
         let { setDropDown } = this.state
-        console.log(setDropDown, "yigjqiudbwq")
         this.setState({ setDropDown: !setDropDown })
     }
 
@@ -157,7 +149,7 @@ class ConfirmLocation extends React.Component {
 
 
     render() {
-        let { userData, errors, checked } = this.state
+        let { userData, errors } = this.state
         return (
             <View style={{ height: height }}>
                 <BackgroundContent />

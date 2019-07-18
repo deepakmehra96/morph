@@ -34,7 +34,10 @@ class Options extends React.Component {
             return styles.colorBlue
         }
     }
-
+    handleSubmit() {
+        this.props.navigation.navigate('BookTrainer')
+    }
+    
     render() {
         let { dataArray } = this.state
         return (
@@ -59,7 +62,7 @@ class Options extends React.Component {
                     </View>
                 </View>
                 <View style={styles.btnOut}>
-                    <ButtonMain buttonStyle={styles.buttonStyle} isColored={true} label="NEXT" />
+                    <ButtonMain onPress={() => this.handleSubmit()} buttonStyle={styles.buttonStyle} isColored={true} label="NEXT" />
                 </View>
             </View>
         )

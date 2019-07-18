@@ -6,7 +6,6 @@ import is from 'is_js'
 import { fontSmall, errorColor, fontLarge, whiteColor, fontMedium } from '../../components/constant';
 import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
-import { Button } from 'react-native-paper';
 import ButtonMain from '../../components/ButtonMain';
 import { LoginApi } from '../../redux/actions';
 import BackgroundText from '../../components/BackgroundText';
