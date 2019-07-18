@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet, SafeAreaView, Image, ScrollView, ImageBackground } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, SafeAreaView, Image, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
 // import LinearGradient from 'react-native-linear-gradient';
 import { fontMedium, fontLarge, whiteColor, fontXXL, fontXL, fontSmall } from '../../components/constant';
@@ -21,7 +21,11 @@ class Main extends React.Component {
             ]
         };
     }
-
+    handleGoToExercise(item){
+        this.props.navigation.navigate('ExerciseView', {
+            data: item,
+          });
+    }
     render() {
         let { data } = this.state
         return (
@@ -33,26 +37,28 @@ class Main extends React.Component {
                         <View style={styles.listOut}>
                             {data.map((val, index) => {
                                 return (
-                                    <ImageBackground source={require('../../assets/gradient.png')} key={index} style={styles.listView}>
-                                        <View style={styles.textOutMain}>
-                                            <Text style={styles.exerciseHeading}>
-                                                {val.title}
-                                            </Text>
-                                            <View style={styles.trainerTextOut}>
-                                                <View style={styles.groupMain}>
-                                                    <Image style={styles.imageMain} source={require('../../assets/group.png')} />
+                                    <TouchableOpacity onPress={() => this.handleGoToExercise(val)}>
+                                        <ImageBackground source={require('../../assets/gradient.png')} key={index} style={styles.listView}>
+                                            <View style={styles.textOutMain}>
+                                                <Text style={styles.exerciseHeading}>
+                                                    {val.title}
+                                                </Text>
+                                                <View style={styles.trainerTextOut}>
+                                                    <View style={styles.groupMain}>
+                                                        <Image style={styles.imageMain} source={require('../../assets/group.png')} />
+                                                    </View>
+                                                    <Text style={styles.trainerText}>
+                                                        {val.trainerCount} Trainers available
+                                                </Text>
                                                 </View>
-                                                <Text style={styles.trainerText}>
-                                                    {val.trainerCount} Trainers available
-                                            </Text>
                                             </View>
-                                        </View>
-                                        <View style={styles.imageContainer}>
-                                            <View style={styles.imageOut}>
-                                                <Image style={styles.imageMain} source={require('../../assets/exercise.png')} />
+                                            <View style={styles.imageContainer}>
+                                                <View style={styles.imageOut}>
+                                                    <Image style={styles.imageMain} source={require('../../assets/exercise.png')} />
+                                                </View>
                                             </View>
-                                        </View>
-                                    </ImageBackground>
+                                        </ImageBackground>
+                                    </TouchableOpacity>
                                 )
                             })}
                         </View>

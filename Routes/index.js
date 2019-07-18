@@ -15,6 +15,9 @@ import UserPayment from '../Views/Accounts/UserPayment'
 import UserCredits from "../Views/Accounts/UserCredits";
 import MapMain from "../Views/Map";
 import ManageBooking from "../Views/Bookings/ManageBooking";
+import ExerciseView from '../Views/ExerciseBooking/Exercise'
+import Options from "../Views/ExerciseBooking/Options";
+import BookingTime from "../Views/ExerciseBooking/BookingTime";
 
 const AppNavigator = createStackNavigator(
   {
@@ -33,10 +36,13 @@ const AppNavigator = createStackNavigator(
     UserPayment: UserPayment,
     UserCredits: UserCredits,
     MapMain: MapMain,
-    ManageBooking: ManageBooking
+    ManageBooking: ManageBooking,
+    ExerciseView:ExerciseView,
+    Options:Options,
+    BookingTime:BookingTime
   },
   {
-    initialRouteName: "ConfirmLocation",
+    initialRouteName: "LoggedinTabs",
     defaultNavigationOptions: {
       gesturesEnabled: false
     },
