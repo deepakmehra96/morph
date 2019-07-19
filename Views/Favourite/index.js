@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import BackgroundText from '../../components/BackgroundText';
 import BackgroundContent from '../../components/BackgroundContent';
 import { whiteColor } from '../../components/constant';
+import ProfileBackground from '../../components/ProfileBackground';
 var { height, width } = Dimensions.get('window')
 
 
@@ -39,13 +40,11 @@ class Favorite extends React.Component {
         let { listArray, tabIndex } = this.state
         let arrayToShow = tabIndex == 0 ? listArray : []  
         return (
-            <SafeAreaView style={styles.fullScreen}>
-                <BackgroundContent />
-                <View style={styles.upperCon}>
-                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="FAVOURITES" />
+            <View style={styles.fullScreen}>
+                 <View style={styles.flexMain}>
+                    <ProfileBackground textHeading="FAVOURITES" />
                 </View>
-                <View style={styles.mainContainer}>
-                    <View style={styles.innerContainer}>
+                <View style={styles.flexSecondCon}>
                         <View style={styles.tabOut}>
                             <TouchableOpacity onPress={() => this.handleTab(0)} style={tabIndex == 0 ? styles.tabMainActive : styles.tabMain}>
                                 <Text style={styles.tabText}>TRAINERS</Text>
@@ -75,8 +74,7 @@ class Favorite extends React.Component {
                         </ScrollView>
 
                     </View>
-                </View>
-            </SafeAreaView>
+            </View>
         )
     }
 }
@@ -86,16 +84,13 @@ const styles = StyleSheet.create({
     fullScreen: {
         height: height,
     },
-    upperCon: {
-        marginTop: 22,
+    flexMain: {
+        flex: 1
     },
-    mainContainer: {
-        height: height,
-        justifyContent: 'flex-end'
-    },
-    innerContainer: {
-        backgroundColor: '#fff',
-        height: height - 50
+    flexSecondCon: {
+        flex: 2,
+        backgroundColor: whiteColor,
+        paddingBottom: 60
     },
     listStyle: {
         paddingLeft: 40
@@ -105,7 +100,6 @@ const styles = StyleSheet.create({
         height: 20
     },
     scrollContent: {
-        marginBottom: 220,
         flexDirection:'row',
         flexWrap:'wrap',
         paddingLeft:18

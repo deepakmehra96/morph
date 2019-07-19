@@ -6,6 +6,7 @@ import BackgroundContent from '../../components/BackgroundContent';
 import Header from '../../components/Header';
 import { whiteColor, fontXL } from '../../components/constant';
 import ListItem from '../../components/ListItem.js';
+import ProfileBackground from '../../components/ProfileBackground';
 var { height, width } = Dimensions.get('window')
 
 class UserPayment extends React.Component {
@@ -19,57 +20,52 @@ class UserPayment extends React.Component {
     }
     render() {
         return (
-            <SafeAreaView style={styles.fullScreen}>
-                <BackgroundContent />
-                <View style={styles.upperCon}>
+            <View style={styles.fullScreen}>
+                <View style={styles.flexMain}>
                     <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
-                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="PAYMENT" />
+                    <ProfileBackground textHeading="PAYMENT" />
                 </View>
-                <View style={styles.mainContainer}>
-                    <View style={styles.innerContainer}>
-                        <ScrollView>
-                            <View style={styles.innerContentScroll}>
-                                <View style={styles.textOutMain}>
-                                    <Text style={styles.textMain}>PAYMENT METHOD</Text>
-                                </View>
-                                <ListItem
-                                    listStyle={styles.listStyle}
-                                    heading="Card ending in ****1234 *"
-                                    iconRight={require('../../assets/delete.png')}
-                                    iconRightStyle={styles.iconRight}
-                                />
-                                <ListItem
-                                    listStyle={styles.listStyle}
-                                    heading="New payment method..."
-                                    iconRight={require('../../assets/plus.png')}
-                                    iconRightStyle={styles.iconRightPlus}
-                                />
-                                <View style={styles.textOutMain}>
-                                    <Text style={styles.textMain}>TRANSACTIONS</Text>
-                                </View>
-                                <ListItem
-                                    listStyle={styles.listStyle}
-                                    heading="£35"
-                                    bottomText="19 May 2019 12:23"
-                                    iconRight={require('../../assets/arrow.png')}
-                                />
-                                <ListItem
-                                    listStyle={styles.listStyle}
-                                    heading="1 Credit"
-                                    bottomText="19 May 2019 12:23"
-                                    iconRight={require('../../assets/arrow.png')}
-                                />
-                                <ListItem
-                                    listStyle={styles.listStyle}
-                                    heading="£35"
-                                    bottomText="19 May 2019 12:23"
-                                    iconRight={require('../../assets/arrow.png')}
-                                />
+                <View style={styles.flexSecondCon}>
+                    <ScrollView>
+                            <View style={styles.textOutMain}>
+                                <Text style={styles.textMain}>PAYMENT METHOD</Text>
                             </View>
-                        </ScrollView>
-                    </View>
+                            <ListItem
+                                listStyle={styles.listStyle}
+                                heading="Card ending in ****1234 *"
+                                iconRight={require('../../assets/delete.png')}
+                                iconRightStyle={styles.iconRight}
+                            />
+                            <ListItem
+                                listStyle={styles.listStyle}
+                                heading="New payment method..."
+                                iconRight={require('../../assets/plus.png')}
+                                iconRightStyle={styles.iconRightPlus}
+                            />
+                            <View style={styles.textOutMain}>
+                                <Text style={styles.textMain}>TRANSACTIONS</Text>
+                            </View>
+                            <ListItem
+                                listStyle={styles.listStyle}
+                                heading="£35"
+                                bottomText="19 May 2019 12:23"
+                                iconRight={require('../../assets/arrow.png')}
+                            />
+                            <ListItem
+                                listStyle={styles.listStyle}
+                                heading="1 Credit"
+                                bottomText="19 May 2019 12:23"
+                                iconRight={require('../../assets/arrow.png')}
+                            />
+                            <ListItem
+                                listStyle={styles.listStyle}
+                                heading="£35"
+                                bottomText="19 May 2019 12:23"
+                                iconRight={require('../../assets/arrow.png')}
+                            />
+                    </ScrollView>
                 </View>
-            </SafeAreaView>
+            </View>
         )
     }
 }
@@ -79,16 +75,13 @@ const styles = StyleSheet.create({
     fullScreen: {
         height: height,
     },
-    upperCon: {
-        marginTop: 22,
+    flexMain: {
+        flex: 1
     },
-    mainContainer: {
-        height: height,
-        justifyContent: 'flex-end'
-    },
-    innerContainer: {
-        backgroundColor: '#fff',
-        height: height - 50,
+    flexSecondCon: {
+        flex: 2,
+        backgroundColor: whiteColor,
+        marginBottom: 70,
     },
     listStyle: {
         paddingLeft: 40
@@ -113,7 +106,4 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20
     },
-    innerContentScroll: {
-        marginBottom: 220,
-    }
 })

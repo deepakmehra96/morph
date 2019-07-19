@@ -8,6 +8,7 @@ import { whiteColor, fontXL } from '../../components/constant';
 import ListItem from '../../components/ListItem.js';
 import ActivationCode from '../Auth/ActivationCode';
 import Login from '../Auth/Login';
+import ProfileBackground from '../../components/ProfileBackground';
 var { height, width } = Dimensions.get('window')
 
 
@@ -25,60 +26,60 @@ class Accounts extends React.Component {
         console.log(1)
         this.props.navigation.navigate("UserLocation")
     }
-    handlePayment(){
+    handlePayment() {
         console.log(2)
         this.props.navigation.navigate("UserPayment")
     }
-    handleCredits(){
+    handleCredits() {
         console.log(3)
         this.props.navigation.navigate("UserCredits")
     }
+    handleNotes(){
+        this.props.navigation.navigate("UserNotes")
+    }
     render() {
         return (
-            <SafeAreaView style={styles.fullScreen}>
-                <BackgroundContent />
-                <View style={styles.upperCon}>
-                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="ACCOUNT & SETTING" />
+            <View style={styles.fullScreen}>
+                <View style={styles.flexMain}>
+                    <ProfileBackground textHeading="ACCOUNT & SETTINGS" />
                 </View>
-                <View style={styles.mainContainer}>
-                    <View style={styles.innerContainer}>
-                        <ScrollView>
-                            <TouchableOpacity onPress={() => this.handleLocation()}>
-                                <ListItem
-                                    iconLeftStyle={styles.iconOutLoaction}
-                                    heading="Locations"
-                                    iconLeft={require('../../assets/location.png')}
-                                    iconRight={require('../../assets/arrow.png')}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => this.handlePayment()}>
-                                <ListItem
-                                    heading="Payments"
-                                    iconLeftStyle={styles.iconOut}
-                                    iconLeft={require('../../assets/card.png')}
-                                    iconRight={require('../../assets/arrow.png')}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => this.handleCredits()}>
-                                <ListItem
-                                    heading="Credits"
-                                    iconLeftStyle={styles.iconOutCredits}
-                                    iconLeft={require('../../assets/dollar.png')}
-                                    iconRight={require('../../assets/arrow.png')}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => this.handleNotes()}>
-                                <ListItem
-                                    heading="Notes"
-                                    iconLeftStyle={styles.iconOutNotes}
-                                    iconLeft={require('../../assets/notes.png')}
-                                    iconRight={require('../../assets/arrow.png')}
-                                />
-                            </TouchableOpacity>
-                        </ScrollView>
-                    </View>
+                <View style={styles.flexSecondCon}>
+                    <ScrollView>
+                        <TouchableOpacity onPress={() => this.handleLocation()}>
+                            <ListItem
+                                iconLeftStyle={styles.iconOutLoaction}
+                                heading="Locations"
+                                iconLeft={require('../../assets/location.png')}
+                                iconRight={require('../../assets/arrow.png')}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.handlePayment()}>
+                            <ListItem
+                                heading="Payments"
+                                iconLeftStyle={styles.iconOut}
+                                iconLeft={require('../../assets/card.png')}
+                                iconRight={require('../../assets/arrow.png')}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.handleCredits()}>
+                            <ListItem
+                                heading="Credits"
+                                iconLeftStyle={styles.iconOutCredits}
+                                iconLeft={require('../../assets/dollar.png')}
+                                iconRight={require('../../assets/arrow.png')}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.handleNotes()}>
+                            <ListItem
+                                heading="Notes"
+                                iconLeftStyle={styles.iconOutNotes}
+                                iconLeft={require('../../assets/notes.png')}
+                                iconRight={require('../../assets/arrow.png')}
+                            />
+                        </TouchableOpacity>
+                    </ScrollView>
                 </View>
-            </SafeAreaView>
+            </View>
         )
     }
 }
@@ -88,16 +89,13 @@ const styles = StyleSheet.create({
     fullScreen: {
         height: height,
     },
-    upperCon: {
-        marginTop: 22,
+    flexMain: {
+        flex: 1
     },
-    mainContainer: {
-        height: height,
-        justifyContent: 'flex-end'
-    },
-    innerContainer: {
-        backgroundColor: '#fff',
-        height: height - 50
+    flexSecondCon: {
+        flex: 2,
+        backgroundColor: whiteColor,
+        paddingBottom: 60
     },
     iconOutLoaction: {
         marginLeft: 5

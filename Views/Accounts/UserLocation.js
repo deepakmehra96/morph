@@ -5,6 +5,8 @@ import BackgroundText from '../../components/BackgroundText';
 import BackgroundContent from '../../components/BackgroundContent';
 import Header from '../../components/Header';
 import ListItem from '../../components/ListItem.js';
+import ProfileBackground from '../../components/ProfileBackground';
+import { whiteColor } from '../../components/constant';
 var { height, width } = Dimensions.get('window')
 
 class UserLocation extends React.Component {
@@ -18,47 +20,44 @@ class UserLocation extends React.Component {
     }
     render() {
         return (
-            <SafeAreaView style={styles.fullScreen}>
-                <BackgroundContent />
-                <View style={styles.upperCon}>
-                    <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation}/>
-                    <BackgroundText textConatiner={{ top: "30%" }} showImage={false} textHeading="LOCATION" />
+            <View style={styles.fullScreen}>
+                <View style={styles.flexMain}>
+                    <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
+                    <ProfileBackground textHeading="LOCATIONS" />
                 </View>
-                <View style={styles.mainContainer}>
-                    <View style={styles.innerContainer}>
-                        <ScrollView>
-                            <ListItem
-                                listStyle={styles.listStyle}
-                                heading="Home" 
-                                bottomText="10 Down Street"
-                                iconRight={require('../../assets/delete.png')}
-                                iconRightStyle={styles.iconRight}
-                            />
-                            <ListItem
-                                listStyle={styles.listStyle}
-                                heading="Work"
-                                bottomText="10 Down Street"
-                                iconRight={require('../../assets/delete.png')}
-                                iconRightStyle={styles.iconRight}
-                            />
-                            <ListItem
-                                listStyle={styles.listStyle}
-                                heading="Parent"
-                                bottomText="10 Down Street"
-                                iconRight={require('../../assets/delete.png')}
-                                iconRightStyle={styles.iconRight}
-                            />
-                            <ListItem
-                                listStyle={styles.listStyle}
-                                heading="New Loaction..."
-                                bottomText="10 Down Street"
-                                iconRight={require('../../assets/plus.png')}
-                                iconRightStyle={styles.iconRightPlus}
-                            />
-                        </ScrollView>
-                    </View>
+                <View style={styles.flexSecondCon}>
+                    <ScrollView>
+                        <ListItem
+                            listStyle={styles.listStyle}
+                            heading="Home"
+                            bottomText="10 Down Street"
+                            iconRight={require('../../assets/delete.png')}
+                            iconRightStyle={styles.iconRight}
+                        />
+                        <ListItem
+                            listStyle={styles.listStyle}
+                            heading="Work"
+                            bottomText="10 Down Street"
+                            iconRight={require('../../assets/delete.png')}
+                            iconRightStyle={styles.iconRight}
+                        />
+                        <ListItem
+                            listStyle={styles.listStyle}
+                            heading="Parent"
+                            bottomText="10 Down Street"
+                            iconRight={require('../../assets/delete.png')}
+                            iconRightStyle={styles.iconRight}
+                        />
+                        <ListItem
+                            listStyle={styles.listStyle}
+                            heading="New Loaction..."
+                            bottomText="10 Down Street"
+                            iconRight={require('../../assets/plus.png')}
+                            iconRightStyle={styles.iconRightPlus}
+                        />
+                    </ScrollView>
                 </View>
-            </SafeAreaView>
+            </View>
         )
     }
 }
@@ -68,26 +67,23 @@ const styles = StyleSheet.create({
     fullScreen: {
         height: height,
     },
-    upperCon: {
-        marginTop: 22,
+    flexMain: {
+        flex: 1
     },
-    mainContainer: {
-        height: height,
-        justifyContent: 'flex-end'
+    flexSecondCon: {
+        flex: 2,
+        backgroundColor: whiteColor,
+        marginBottom:70
     },
-    innerContainer: {
-        backgroundColor: '#fff',
-        height: height - 50
+    listStyle: {
+        paddingLeft: 40
     },
-    listStyle:{
-        paddingLeft:40
+    iconRight: {
+        width: 16,
+        height: 20
     },
-    iconRight:{
-        width:16,
-        height:20
-    },
-    iconRightPlus:{
-        width:20,
-        height:20
+    iconRightPlus: {
+        width: 20,
+        height: 20
     }
 })
