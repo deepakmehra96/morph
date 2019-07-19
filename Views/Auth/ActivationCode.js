@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
 import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
@@ -46,9 +46,13 @@ class ActivationCode extends React.Component {
         return (
             <View style={styles.fullScreen}>
                 <BackgroundContent />
-                <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
-                <View style={styles.mainContainer}>
-                    <BackgroundText showImage={true} textHeading="ACTIVATE" />
+                <View style={{ flex: 1 }}>
+                    <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
+                    <View style={styles.mainContainer}>
+                        <BackgroundText showImage={true} textHeading="ACTIVATE" />
+                    </View>
+                </View>
+                <View style={{ flex: 2, alignItems: 'center' }}>
                     <View style={styles.formContainer}>
                         <View style={styles.textBoxOut}>
                             <TextBox
@@ -69,7 +73,7 @@ class ActivationCode extends React.Component {
                     />
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textBottom}>Didn’t receive the code? </Text>
-                        <TouchableOpacity style={{ borderBottomColor: whiteColor, borderBottomWidth: 1 }}>
+                        <TouchableOpacity style={styles.resendTextOut}>
                             <Text style={styles.textBottom}> Resend it.</Text>
                         </TouchableOpacity>
                     </View>
@@ -85,15 +89,16 @@ const styles = StyleSheet.create({
         height: height
     },
     mainContainer: {
-        marginTop: 52,
+        marginTop: 50,
         alignItems: 'center',
     },
     formContainer: {
-        marginTop: 55,
         width: width - 70,
+        justifyContent: 'center',
     },
     textBoxOut: {
-        marginTop: 20
+        marginTop: 20,
+        width: '100%'
     },
     errorMsgText: {
         fontSize: fontSmall,
@@ -110,6 +115,10 @@ const styles = StyleSheet.create({
         marginTop: 15,
         color: whiteColor,
         textAlign: 'center',
-        fontSize:fontMedium
+        fontSize: fontMedium
     },
+    resendTextOut: {
+        borderBottomColor: whiteColor,
+        borderBottomWidth: 1
+    }
 })

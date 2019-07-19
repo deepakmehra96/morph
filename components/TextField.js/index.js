@@ -33,14 +33,15 @@ const styles = StyleSheet.create({
     label:{ 
         paddingLeft: 12, 
         fontSize: fontXL, 
-        color: whiteColor 
+        color: whiteColor,
     },
     textInput: {
         paddingLeft: 12,
         fontSize: fontLarge,
         color: whiteColor,
         paddingBottom: 10,
-        paddingRight:50
+        paddingRight:50,
+
     },
     iconStyle:{
         height:16,

@@ -20,7 +20,7 @@ export default ButtonMain;
 const styles = StyleSheet.create({
     textColor:{ 
         color: whiteColor, 
-        letterSpacing:5
+        letterSpacing:3
     },
     buttonTransparent:{
         backgroundColor:"transparent",

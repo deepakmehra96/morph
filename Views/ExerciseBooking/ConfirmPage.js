@@ -10,8 +10,8 @@ import ActivationCode from '../Auth/ActivationCode';
 import Login from '../Auth/Login';
 import ButtonMain from '../../components/ButtonMain';
 import ProfileBackground from '../../components/ProfileBackground';
+import DialogBox from '../../components/Common/DialogBox';
 var { height, width } = Dimensions.get('window')
-
 
 class ConfirmPage extends React.Component {
     static navigationOptions = {
@@ -20,7 +20,8 @@ class ConfirmPage extends React.Component {
     constructor() {
         super()
         this.state = {
-            selectPayment: ''
+            selectPayment: '',
+            dialogVisible:false
         };
     }
     componentDidMount() {
@@ -44,8 +45,15 @@ class ConfirmPage extends React.Component {
             )
         }
     }
+    handleSubmit(){
+        this.setState({ dialogVisible : true})
+    }
+    handleModal(visible){
+        this.setState({ dialogVisible : false})
+    }
 
     render() {
+        let { dialogVisible } = this.state
         return (
             <View style={styles.fullScreen}>
                 <View style={styles.flexMain}>
@@ -80,10 +88,16 @@ class ConfirmPage extends React.Component {
                         </ScrollView>
                         <View style={styles.btnStyles}>
                             {this.handleDropDown()}
-                            <ButtonMain isColored={true} label="CONFIRM & PAY" />
+                            <ButtonMain onPress={() => this.handleSubmit()} isColored={true} label="CONFIRM & PAY" />
                         </View>
                     </View>
                 </View>
+                <DialogBox 
+                    visible={dialogVisible} 
+                    openCloseModal={() => this.handleModal()} 
+                    headingText="ADD GOAL" 
+                    propStyle={{height: 230 }}
+                    height="100%"/>      
             </View>
         )
     }

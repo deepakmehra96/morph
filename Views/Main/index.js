@@ -21,10 +21,10 @@ class Main extends React.Component {
             ]
         };
     }
-    handleGoToExercise(item){
+    handleGoToExercise(item) {
         this.props.navigation.navigate('ExerciseView', {
             data: item,
-          });
+        });
     }
     render() {
         let { data } = this.state

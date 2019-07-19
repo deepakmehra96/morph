@@ -3,8 +3,7 @@ import { View, Text, Dimensions, StyleSheet, TouchableOpacity, KeyboardAvoidingV
 import { connect } from 'react-redux'
 import microValidator from 'micro-validator'
 import is from 'is_js'
-import { fontSmall, errorColor, fontLarge, whiteColor, fontMedium } from '../../components/constant';
-import Header from '../../components/Header';
+import { errorColor, fontLarge, whiteColor, fontMedium } from '../../components/constant';
 import TextBox from '../../components/TextField.js';
 import ButtonMain from '../../components/ButtonMain';
 import { LoginApi } from '../../redux/actions';
@@ -64,8 +63,8 @@ class Login extends React.Component {
 
         //empty textBoxes
         userData.email = '',
-        userData.password = '',
-        this.setState({ userData })
+            userData.password = '',
+            this.setState({ userData })
         this.props.navigation.navigate("LoggedinTabs")
     }
 
@@ -74,11 +73,11 @@ class Login extends React.Component {
         return (
             <View style={styles.fullScreen}>
                 <BackgroundContent />
-                <View style={styles.mainContainer}>
-                    <BackgroundText showImage={true} textHeading="SIGN IN" />
-                    <KeyboardAvoidingView
-                        behavior={Platform.OS == 'ios' ? 'position' : ''}
-                    >
+                <KeyboardAvoidingView
+                    behavior={Platform.OS == 'ios' ? 'position' : ''}
+                >
+                    <View style={styles.mainContainer}>
+                        <BackgroundText showImage={true} textHeading="SIGN IN" />
                         <View style={styles.formContainer}>
                             <View style={styles.textBoxOut}>
                                 <TextBox
@@ -103,10 +102,9 @@ class Login extends React.Component {
                                 />
                                 <Text style={styles.errorMsgText}>{errors.password && errors.password[0]}</Text>
                             </View>
-
                         </View>
-                    </KeyboardAvoidingView>
-                </View>
+                    </View>
+                </KeyboardAvoidingView>
                 <View style={styles.buttonOut}>
                     <ButtonMain
                         onPress={() => this.handleSubmit()}
@@ -115,8 +113,8 @@ class Login extends React.Component {
                     />
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textBottom}>Not signed up yet?</Text>
-                        <TouchableOpacity style={{ borderBottomColor: whiteColor, borderBottomWidth: 1 }} onPress={() => this.props.navigation.navigate('SignUp')}>
-                            <Text style={styles.textBottom}>  Sign up here </Text>
+                        <TouchableOpacity style={styles.signUpTextOut} onPress={() => this.props.navigation.navigate('SignUp')}>
+                            <Text style={styles.textBottom}>Sign up here </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -136,8 +134,9 @@ const styles = StyleSheet.create({
     },
     formContainer: {
         width: width - 80,
-        height: height - 350,
-        justifyContent: 'center'
+        // height: height - 350,
+        marginTop: 50,
+        // justifyContent: 'center'
     },
     textBoxOut: {
         marginTop: 25,
@@ -145,10 +144,6 @@ const styles = StyleSheet.create({
     errorMsgText: {
         fontSize: fontLarge,
         color: errorColor
-    },
-    signUpTextOut: {
-        marginTop: 15,
-        alignItems: 'flex-end'
     },
     signUpText: {
         color: 'blue'
@@ -163,11 +158,15 @@ const styles = StyleSheet.create({
     textBottom: {
         marginTop: 15,
         color: whiteColor,
-        fontSize:fontMedium ,
+        fontSize: fontMedium,
         textAlign: 'center',
     },
-    emailIcon:{
-        height:13,
-        width:15
+    emailIcon: {
+        height: 13,
+        width: 15
+    },
+    signUpTextOut: {
+        borderBottomColor: whiteColor,
+        borderBottomWidth: 1,
     }
 })

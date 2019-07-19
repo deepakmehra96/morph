@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, KeyboardAvoidingView, Platform } from 'react-native';
 import { connect } from 'react-redux'
-import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
 import { fontSmall, errorColor, whiteColor, fontMedium } from '../../components/constant';
 import ButtonMain from '../../components/ButtonMain';
@@ -44,33 +43,35 @@ class Location extends React.Component {
         return (
             <View style={styles.fullScreen}>
                 <BackgroundContent />
-                <View style={styles.mainContainer}>
-                    <BackgroundText showImage={true} textHeading="LOCATION" />
-                    <Text style={styles.textBottom}>Find the default location you wish to exercise</Text>
-                    <View style={styles.formContainer}>
-                        <View style={styles.textBoxOut}>
-                            <TextBox
-                                mode='outline'
-                                placeholder="Postcode or address"
-                                onChangeText={this.handleChange.bind(this)}
-                                value={location}
-                            />
-                            <Text style={styles.errorMsgText}>{errors}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.textBottom}>
-                                Or
+                <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : ''}>
+                    <View style={styles.mainContainer}>
+                        <BackgroundText showImage={true} textHeading="LOCATION" />
+                        <Text style={styles.textBottom}>Find the default location you wish to exercise</Text>
+                        <View style={styles.formContainer}>
+                            <View style={styles.textBoxOut}>
+                                <TextBox
+                                    mode='outline'
+                                    placeholder="Postcode or address"
+                                    onChangeText={this.handleChange.bind(this)}
+                                    value={location}
+                                />
+                                <Text style={styles.errorMsgText}>{errors}</Text>
+                            </View>
+                            <View>
+                                <Text style={styles.textOR}>
+                                    Or
                             </Text>
-                        </View>
-                        <View style={styles.buttonOut}>
-                            <ButtonMain
-                                onPress={() => this.handleSubmit()}
-                                isColored={false}
-                                label='CURRENT LOCATION'
-                            />
+                            </View>
+                            <View style={styles.buttonOut}>
+                                <ButtonMain
+                                    onPress={() => this.handleSubmit()}
+                                    isColored={false}
+                                    label='CURRENT LOCATION'
+                                />
+                            </View>
                         </View>
                     </View>
-                </View>
+                </KeyboardAvoidingView>
             </View>
         )
     }
@@ -97,15 +98,21 @@ const styles = StyleSheet.create({
         color: errorColor
     },
     buttonOut: {
-        marginTop:25,
+        marginTop: 25,
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    textOR: {
+        marginTop: 25,
+        color: whiteColor,
+        textAlign: 'center',
+        fontSize: fontMedium,
     },
     textBottom: {
         marginTop: 45,
         color: whiteColor,
         textAlign: 'center',
-        fontSize:fontMedium,
+        fontSize: fontMedium,
     },
 })

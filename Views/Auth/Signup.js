@@ -13,7 +13,6 @@ import BackgroundText from '../../components/BackgroundText';
 import { CheckBox } from 'react-native-elements'
 var { height, width } = Dimensions.get('window')
 
-
 let validationSchema = {
     fullName: {
         required: {
@@ -49,7 +48,6 @@ class SignUp extends React.Component {
                 password: ''
             },
             errors: {},
-            keyboardAvoidEnable: false,
             checked: false
         };
     }
@@ -91,13 +89,13 @@ class SignUp extends React.Component {
     render() {
         let { userData, errors, checked } = this.state
         return (
-            <ScrollView>
-                <View style={{ height: height }}>
+            <View>
+                <View style={styles.fullHeight}>
                     <BackgroundContent />
-                    <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation}/>
+                    <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
                     <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : ''}>
                         <View style={styles.mainContainer}>
-                            <BackgroundText textHeading="SIGN UP" />
+                            <BackgroundText showImage={true} textHeading="SIGN UP" />
                             <View style={styles.formContainer}>
                                 <View style={styles.textBoxOut}>
                                     <TextBox
@@ -105,7 +103,6 @@ class SignUp extends React.Component {
                                         placeholder="Full Name"
                                         onChangeText={this.handleChangeText.bind(this, 'fullName')}
                                         value={userData.fullName}
-                                        onFocus={() => this.setState({ keyboardAvoidEnable: false })}
                                         rightIcon={require('../../assets/person.png')}
                                     />
                                     <Text style={styles.errorMsgText}>{errors.fullName && errors.fullName[0]}</Text>
@@ -116,7 +113,6 @@ class SignUp extends React.Component {
                                         placeholder="Email"
                                         onChangeText={this.handleChangeText.bind(this, 'email')}
                                         value={userData.email}
-                                        onFocus={() => this.setState({ keyboardAvoidEnable: true })}
                                         rightIcon={require('../../assets/email.png')}
                                         iconStylesProps={styles.emailIcon}
                                     />
@@ -130,7 +126,6 @@ class SignUp extends React.Component {
                                         onChangeText={this.handleChangeText.bind(this, 'password')}
                                         value={userData.password}
                                         secureTextEntry={true}
-                                        onFocus={() => this.setState({ keyboardAvoidEnable: true })}
                                         rightIcon={require('../../assets/lock.png')}
                                         password={true}
                                     />
@@ -159,18 +154,21 @@ class SignUp extends React.Component {
                     />
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textBottom}>Already signed up? </Text>
-                        <TouchableOpacity style={{ borderBottomColor: whiteColor, borderBottomWidth: 1 }} onPress={() => this.props.navigation.navigate('Login')}>
-                            <Text style={styles.textBottom}> Sign in here</Text>
+                        <TouchableOpacity style={styles.signInTextOut} onPress={() => this.props.navigation.navigate('Login')}>
+                            <Text style={styles.textBottom}>Sign in here</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
-            </ScrollView>
+            </View>
         )
     }
 }
 export default connect(state => state)(SignUp)
 
 const styles = StyleSheet.create({
+    fullHeight: {
+        height: height
+    },
     fullScreen: {
         height: height,
         width: width,
@@ -181,7 +179,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     formContainer: {
-        marginTop: 25,
+        marginTop: 40,
         width: width - 70,
     },
     textBoxOut: {
@@ -245,14 +243,17 @@ const styles = StyleSheet.create({
         marginTop: 15,
         color: whiteColor,
         textAlign: 'center',
-        fontSize:fontMedium
+        fontSize: fontMedium
     },
     flexRow: {
         flexDirection: "row"
     },
-    emailIcon:{
-        height:13,
-        width:15
+    emailIcon: {
+        height: 13,
+        width: 15
+    },
+    signInTextOut: {
+        borderBottomColor: whiteColor,
+        borderBottomWidth: 1
     }
-
 })
