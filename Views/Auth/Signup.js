@@ -93,7 +93,7 @@ class SignUp extends React.Component {
                 <View style={styles.fullHeight}>
                     <BackgroundContent />
                     <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
-                    <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : ''}>
+                    <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : 'position'}>
                         <View style={styles.mainContainer}>
                             <BackgroundText showImage={true} textHeading="SIGN UP" />
                             <View style={styles.formContainer}>

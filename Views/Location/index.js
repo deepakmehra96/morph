@@ -43,7 +43,7 @@ class Location extends React.Component {
         return (
             <View style={styles.fullScreen}>
                 <BackgroundContent />
-                <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : ''}>
+                <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : 'position'}>
                     <View style={styles.mainContainer}>
                         <BackgroundText showImage={true} textHeading="LOCATION" />
                         <Text style={styles.textBottom}>Find the default location you wish to exercise</Text>

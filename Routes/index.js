@@ -48,7 +48,7 @@ const AppNavigator = createStackNavigator(
     ConfirmPage:ConfirmPage
   },
   {
-    initialRouteName: "LoggedinTabs",
+    initialRouteName: "Login",
     defaultNavigationOptions: {
       gesturesEnabled: false
     },

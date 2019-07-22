@@ -155,7 +155,7 @@ class ConfirmLocation extends React.Component {
                 <SafeAreaView>
                     <ScrollView>
                         <View style={styles.scrolllContent}>
-                            <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : ''}>
+                            <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : 'position'}>
                                 <Header label="CONFIRM LOCATION" source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
                                 {this.handleDropDown()}
                                 {this.getDropDown()}
