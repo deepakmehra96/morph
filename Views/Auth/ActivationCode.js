@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-nati
 import { connect } from 'react-redux'
 import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
-import { fontSmall, errorColor, whiteColor, fontMedium } from '../../components/constant';
+import { fontSmall, errorColor, whiteColor, fontMedium, buttonBottom } from '../../components/constant';
 import { ActivationCodeApi } from '../../redux/actions';
 import ButtonMain from '../../components/ButtonMain';
 import BackgroundContent from '../../components/BackgroundContent';
@@ -46,13 +46,13 @@ class ActivationCode extends React.Component {
         return (
             <View style={styles.fullScreen}>
                 <BackgroundContent />
-                <View style={{ flex: 1 }}>
+                <View style={styles.flexMain}>
                     <Header source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
                     <View style={styles.mainContainer}>
                         <BackgroundText showImage={true} textHeading="ACTIVATE" />
                     </View>
                 </View>
-                <View style={{ flex: 2, alignItems: 'center' }}>
+                <View style={styles.flexContainer}>
                     <View style={styles.formContainer}>
                         <View style={styles.textBoxOut}>
                             <TextBox
@@ -74,7 +74,7 @@ class ActivationCode extends React.Component {
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textBottom}>Didn’t receive the code? </Text>
                         <TouchableOpacity style={styles.resendTextOut}>
-                            <Text style={styles.textBottom}> Resend it.</Text>
+                            <Text style={styles.textBottom}>Resend it.</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -87,6 +87,13 @@ export default connect(state => state)(ActivationCode)
 const styles = StyleSheet.create({
     fullScreen: {
         height: height
+    },
+    flexMain:{
+        flex: 1 
+    },
+    flexContainer:{ 
+        flex: 2, 
+        alignItems: 'center' 
     },
     mainContainer: {
         marginTop: 50,
@@ -106,7 +113,7 @@ const styles = StyleSheet.create({
     },
     buttonOut: {
         position: 'absolute',
-        bottom: 25,
+        bottom: buttonBottom,
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center'

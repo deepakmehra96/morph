@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, ScrollView, Platform, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux'
-import { whiteColor, fontMedium } from '../../components/constant';
+import { whiteColor, fontMedium, buttonBottom } from '../../components/constant';
 import ButtonMain from '../../components/ButtonMain';
 import Header from '../../components/Header';
 import ProfileBackground from '../../components/ProfileBackground';
@@ -19,15 +19,16 @@ class BookTrainer extends React.Component {
         this.state = {
             checked:false,
             listArray: [
-                { name: 'JODI PITOUT', rating: 4.9 },
-                { name: 'JODI PITOUT', rating: 4.9 },
-                { name: 'JODI PITOUT', rating: 4.9 },
-                { name: 'JODI PITOUT', rating: 4.9 },
-                { name: 'JODI PITOUT', rating: 4.9 },
-                { name: 'JODI PITOUT', rating: 4.9 },
-                { name: 'JODI PITOUT', rating: 4.9 },
-                { name: 'JODI PITOUT', rating: 4.9 }
+                { _id:1, name: 'JODI PITOUT', rating: 4.9 },
+                { _id:2, name: 'JODI PITOUT', rating: 4.9 },
+                { _id:3, name: 'JODI PITOUT', rating: 4.9 },
+                { _id:4, name: 'JODI PITOUT', rating: 4.9 },
+                { _id:5, name: 'JODI PITOUT', rating: 4.9 },
+                { _id:6, name: 'JODI PITOUT', rating: 4.9 },
+                { _id:7, name: 'JODI PITOUT', rating: 4.9 },
+                { _id:8, name: 'JODI PITOUT', rating: 4.9 }
             ],
+            selectedId:'',
             tabIndex: 0,
             selectGender:'',
             setDropDown: false,
@@ -38,6 +39,16 @@ class BookTrainer extends React.Component {
             ],
 
         };
+    }
+
+    handleSizeSelect(val){
+        this.setState({ selectedId: val._id})
+    }
+    hnadleSelctedColor(val){
+        let { selectedId } = this.state
+        if (val._id == selectedId) {
+            return styles.colorBlue
+        }
     }
 
     handleBooking() {
@@ -121,26 +132,23 @@ class BookTrainer extends React.Component {
                                     checkedColor="#753DCF"
                                     uncheckedColor="#753DCF"
                                     checkedIcon="check-square"
-
                                 />
                             </View>
                             <View style={styles.genderOut}>
-                                {/* <Text>GENDER</Text> */}
                                 {this.handleDropDown()}
-                                
                             </View>
                         </View>
                         <ScrollView>
                             <View style={styles.scrollContent}>
                                 {listArray.map((val, index) => {
                                     return (
-                                        <View key={index} style={styles.boxMain}>
+                                        <TouchableOpacity onPress={() => this.handleSizeSelect(val)} key={index} style={[styles.boxMain, this.hnadleSelctedColor(val)]}>
                                             <View style={styles.imageOut}>
                                                 <Image style={styles.imagMain} source={require('../../assets/dp.png')} />
                                             </View>
-                                            <Text numberOfLines={1} style={styles.textAll}>{val.name}</Text>
-                                            <Text style={styles.textAll}>{val.rating}</Text>
-                                        </View>
+                                            <Text numberOfLines={1} style={[styles.textAll, this.hnadleSelctedColor(val)]}>{val.name}</Text>
+                                            <Text style={[styles.textAll, this.hnadleSelctedColor(val)]}>{val.rating}</Text>
+                                        </TouchableOpacity>
                                     )
                                 })}
                             </View>
@@ -172,7 +180,7 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         paddingTop: 45,
-        marginBottom: 60,
+        marginBottom: Platform.OS  == 'ios' ? 60 : 75,
     },
     options:{
         paddingLeft:35,
@@ -248,10 +256,14 @@ const styles = StyleSheet.create({
     btnOut: {
         width: width,
         position: 'absolute',
-        bottom: 20,
+        bottom: buttonBottom,
         alignItems: 'center'
     },
     buttonStyle: {
         width: width - 50
+    },
+    colorBlue:{
+        color:"#753DCF", 
+        borderColor:'#753DCF'
     },
 })

@@ -123,7 +123,6 @@ class Booking extends React.Component {
                             })}
                         </View>
                     </ScrollView>
-
                 </View>
             </View>
         )

@@ -3,7 +3,7 @@ import { View, Text, Dimensions, StyleSheet, TouchableOpacity, KeyboardAvoidingV
 import { connect } from 'react-redux'
 import microValidator from 'micro-validator'
 import is from 'is_js'
-import { errorColor, fontLarge, whiteColor, fontMedium } from '../../components/constant';
+import { errorColor, fontLarge, whiteColor, fontMedium, buttonBottom } from '../../components/constant';
 import TextBox from '../../components/TextField.js';
 import ButtonMain from '../../components/ButtonMain';
 import { LoginApi } from '../../redux/actions';
@@ -111,10 +111,10 @@ class Login extends React.Component {
                         isColored={false}
                         label='CONTINUE'
                     />
-                    <View style={{ flexDirection: 'row' }}>
-                        <Text style={styles.textBottom}>Not signed up yet?</Text>
+                    <View style={styles.flexRow}>
+                        <Text style={styles.textBottom}>Not signed up yet? </Text>
                         <TouchableOpacity style={styles.signUpTextOut} onPress={() => this.props.navigation.navigate('SignUp')}>
-                            <Text style={styles.textBottom}>Sign up here </Text>
+                            <Text style={styles.textBottom}>Sign up here</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -138,6 +138,9 @@ const styles = StyleSheet.create({
         marginTop: 50,
         // justifyContent: 'center'
     },
+    flexRow:{ 
+        flexDirection: 'row' 
+    },
     textBoxOut: {
         marginTop: 25,
     },
@@ -150,7 +153,7 @@ const styles = StyleSheet.create({
     },
     buttonOut: {
         position: 'absolute',
-        bottom: 25,
+        bottom: buttonBottom,
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center'

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import BackgroundText from '../../components/BackgroundText';
 import BackgroundContent from '../../components/BackgroundContent';
 import Header from '../../components/Header';
-import { whiteColor, fontXL } from '../../components/constant';
+import { whiteColor, fontXL, buttonBottom } from '../../components/constant';
 import ListItem from '../../components/ListItem.js';
 import ActivationCode from '../Auth/ActivationCode';
 import Login from '../Auth/Login';
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     },
     btnStyles: {
         position: 'absolute',
-        bottom: 20,
+        bottom: buttonBottom,
         width: width,
         alignItems: 'center'
     }

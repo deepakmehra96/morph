@@ -99,17 +99,19 @@ class ConfirmLocation extends React.Component {
         let { setDropDown, loactionArray } = this.state
         if (setDropDown) {
             return (
-                <View style={styles.dropCon}>
+                <View style={[styles.dropCon , Platform.OS == 'ios' && {zIndex:  9999 } ]}>
                     <View style={styles.dropContainerOut}>
-                        <ScrollView>
+                        <ScrollView contentContainerStyle={{zIndex:999999}}>
                             {loactionArray.map((val, index) => {
                                 console.log(val)
                                 return (
-                                    <TouchableOpacity key={index} onPress={() => this.handleDisplayLocation(val.data)} style={{ height: 60, borderBottomColor: "#d1d1d1", borderBottomWidth: 0.8, alignItems: 'center', justifyContent: 'center' }}>
-                                        <Text style={styles.textDropDownCon}>
-                                            {val.data}
-                                        </Text>
-                                    </TouchableOpacity>
+                                    <View>
+                                        <TouchableOpacity key={index} onPress={() => this.handleDisplayLocation(val.data)} style={{ height: 60, borderBottomColor: "#d1d1d1", borderBottomWidth: 0.8, alignItems: 'center', justifyContent: 'center' }}>
+                                            <Text style={styles.textDropDownCon}>
+                                                {val.data}
+                                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 )
                             })}
                         </ScrollView>
@@ -125,7 +127,6 @@ class ConfirmLocation extends React.Component {
 
     handleDropDown() {
         let { selectedLocation } = this.state
-        console.log(selectedLocation, "selectedLocation")
         if (selectedLocation == '') {
             return (
                 <View style={styles.dropDownTextCon}>
@@ -148,12 +149,12 @@ class ConfirmLocation extends React.Component {
 
 
     render() {
-        let { userData, errors } = this.state
+        let { userData, errors, setDropDown } = this.state
         return (
             <View style={styles.fullScreen}>
                 <BackgroundContent />
                 <SafeAreaView>
-                    <ScrollView>
+                    <ScrollView scrollEnabled={!setDropDown}>
                         <View style={styles.scrolllContent}>
                             <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : 'position'}>
                                 <Header label="CONFIRM LOCATION" source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
@@ -204,7 +205,7 @@ class ConfirmLocation extends React.Component {
                                                 value={userData.postCode}
                                             />
                                             <Text style={styles.errorMsgText}>{errors.town && errors.postCode[0]}</Text>
-                                        </View>
+                                        </View> 
                                     </View>
                                 </View>
                             </KeyboardAvoidingView>
@@ -303,15 +304,15 @@ const styles = StyleSheet.create({
     dropCon: {
         width: width,
         alignItems: 'center',
-        zIndex: 9999
+        // zIndex: Platform.OS == 'ios' ? 9999 : 1,
     },
     dropContainerOut: {
         height: 150,
         width: width - 60,
         position: 'absolute',
-        top: 80,
+        top: 70,
         backgroundColor: whiteColor,
-        zIndex: 9,
+        zIndex: 99999,
     },
     textDropDownCon: {
         color: '#A1A1A1',
@@ -344,7 +345,7 @@ const styles = StyleSheet.create({
     mapOut: {
         height: 180,
         width: width,
-        zIndex: 999
+        zIndex: 0
     },
     dropDownMain:{ 
         justifyContent: 'center', 

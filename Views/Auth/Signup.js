@@ -5,7 +5,7 @@ import microValidator from 'micro-validator'
 import is from 'is_js'
 import Header from '../../components/Header';
 import TextBox from '../../components/TextField.js';
-import { fontSmall, errorColor, whiteColor, fontXXL, fontMedium } from '../../components/constant';
+import { fontSmall, errorColor, whiteColor, fontXXL, fontMedium, buttonBottom } from '../../components/constant';
 import { SignUpApi } from '../../redux/actions';
 import ButtonMain from '../../components/ButtonMain';
 import BackgroundContent from '../../components/BackgroundContent';
@@ -152,7 +152,7 @@ class SignUp extends React.Component {
                         isColored={false}
                         label='CONTINUE'
                     />
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={styles.flexRow}>
                         <Text style={styles.textBottom}>Already signed up? </Text>
                         <TouchableOpacity style={styles.signInTextOut} onPress={() => this.props.navigation.navigate('Login')}>
                             <Text style={styles.textBottom}>Sign in here</Text>
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     },
     buttonOut: {
         position: 'absolute',
-        bottom: 25,
+        bottom: buttonBottom,
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center'

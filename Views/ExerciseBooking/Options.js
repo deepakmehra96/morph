@@ -3,7 +3,7 @@ import { View, Text, Dimensions, StyleSheet, ScrollView, TouchableOpacity } from
 import { connect } from 'react-redux'
 import ProfileBackground from '../../components/ProfileBackground';
 import Header from '../../components/Header';
-import { whiteColor, fontXL, fontLarge, fontSmall, fontMedium, fontXXL } from '../../components/constant';
+import { whiteColor, fontXL, fontLarge, fontSmall, fontMedium, fontXXL, buttonBottom } from '../../components/constant';
 import ButtonMain from '../../components/ButtonMain';
 import BackgroundText from '../../components/BackgroundText';
 var { height, width } = Dimensions.get('window')
@@ -35,7 +35,7 @@ class Options extends React.Component {
         }
     }
     handleSubmit() {
-        this.props.navigation.navigate('BookTrainer')
+        this.props.navigation.navigate('BookingTime')
     }
     
     render() {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         padding: 25,
-        marginBottom:70,
+        marginBottom:80,
     },
     textHeading: {
         fontSize: fontLarge,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     btnOut: {
         width: width,
         position: 'absolute',
-        bottom: 20,
+        bottom: buttonBottom,
         alignItems: 'center'
     },
     buttonStyle: {

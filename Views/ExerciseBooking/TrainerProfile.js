@@ -3,7 +3,7 @@ import { View, Text, Dimensions, StyleSheet, ScrollView, SafeAreaView, Touchable
 import { connect } from 'react-redux'
 import ProfileBackground from '../../components/ProfileBackground';
 import Header from '../../components/Header';
-import { whiteColor, fontXL, fontLarge, fontSmall, fontMedium, fontXXL } from '../../components/constant';
+import { whiteColor, fontXL, fontLarge, fontSmall, fontMedium, fontXXL, buttonBottom, buttonView } from '../../components/constant';
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import ButtonMain from '../../components/ButtonMain';
 var { height, width } = Dimensions.get('window')
@@ -108,8 +108,7 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         padding: 25,
-        marginBottom: 40
-
+        marginBottom: buttonView
     },
     textHeading: {
         fontSize: fontLarge,
@@ -125,7 +124,7 @@ const styles = StyleSheet.create({
     btnOut: {
         width: width,
         position: 'absolute',
-        bottom: 20,
+        bottom: buttonBottom,
         alignItems: 'center'
     },
     buttonStyle: {

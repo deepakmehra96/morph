@@ -3,7 +3,7 @@ import { View, Text, Dimensions, StyleSheet, ScrollView, TouchableOpacity } from
 import { connect } from 'react-redux'
 import ProfileBackground from '../../components/ProfileBackground';
 import Header from '../../components/Header';
-import { whiteColor, fontXL, fontLarge, fontSmall, fontMedium, fontXXL } from '../../components/constant';
+import { whiteColor, fontXL, fontLarge, fontSmall, fontMedium, fontXXL, buttonBottom, buttonView } from '../../components/constant';
 import ButtonMain from '../../components/ButtonMain';
 import BackgroundText from '../../components/BackgroundText';
 var { height, width } = Dimensions.get('window')
@@ -34,7 +34,7 @@ class BookingTime extends React.Component {
     }
 
     handleSubmit(){
-
+        this.props.navigation.navigate('BookTrainer')
     }
 
     handleDateSelect(val) {
@@ -80,14 +80,16 @@ class BookingTime extends React.Component {
                             </View>
                             <Text style={styles.textHeading}>SELECT THE <Text style={styles.colorBlueText}>TIME</Text></Text>
                             <View style={styles.flexRow}>
-                                {timeArray.map((val, index) => {
-                                    return (
-                                        <TouchableOpacity onPress={() => this.handleTimeSelect(val)} style={[styles.boxOut, this.hnadleSelctedColorTime(val)]}>
-                                            <Text style={[styles.time, this.hnadleSelctedColorTime(val)]}>{val.time}</Text>
-                                            <Text style={[styles.textSize, this.hnadleSelctedColorTime(val)]}>{val.price}</Text>
-                                        </TouchableOpacity>
-                                    )
-                                })}
+                                {
+                                    timeArray.map((val, index) => {
+                                        return (
+                                            <TouchableOpacity onPress={() => this.handleTimeSelect(val)} style={[styles.boxOut, this.hnadleSelctedColorTime(val)]}>
+                                                <Text style={[styles.time, this.hnadleSelctedColorTime(val)]}>{val.time}</Text>
+                                                <Text style={[styles.textSize, this.hnadleSelctedColorTime(val)]}>{val.price}</Text>
+                                            </TouchableOpacity>
+                                        )
+                                    })
+                                }
                             </View>
                         </ScrollView>
                     </View>
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         padding: 25,
-        marginBottom: 35,
+        marginBottom: buttonView,
     },
     textHeading: {
         fontSize: fontLarge,
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
     btnOut: {
         width: width,
         position: 'absolute',
-        bottom: 20,
+        bottom: buttonBottom,
         alignItems: 'center'
     },
     buttonStyle: {

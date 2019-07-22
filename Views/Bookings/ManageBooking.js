@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Dimensions, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
 import Header from '../../components/Header';
-import { whiteColor, fontXL } from '../../components/constant';
+import { whiteColor, fontXL, buttonBottom } from '../../components/constant';
 import ListItem from '../../components/ListItem.js';
 import ButtonMain from '../../components/ButtonMain';
 import ProfileBackground from '../../components/ProfileBackground';
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     },
     btnStyles: {
         position: 'absolute',
-        bottom: 25,
+        bottom: buttonBottom,
         width: width,
         alignItems: 'center'
     }

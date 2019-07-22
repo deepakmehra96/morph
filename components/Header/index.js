@@ -16,11 +16,9 @@ class Header extends React.Component {
         return (
             <SafeAreaView style={[styles.headerMainView,this.props.mainViewStyles]}>
                 <View style={styles.headerOut}>
-                    <View style={styles.leftImageOut}>
-                        <TouchableOpacity onPress={() => { this.handleBack()}}>
+                        <TouchableOpacity style={styles.leftImageOut} onPress={() => { this.handleBack()}}>
                             <Image style={styles.imageaMain} source={this.props.source} />
                         </TouchableOpacity>
-                    </View>
                     <View style={styles.width100}>
                         <View style={styles.titleOut}>
                             <Text style={[styles.label, this.props.textStyleHeader]} numberOfLines={1}>{this.props.label}</Text>
@@ -38,8 +36,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 20,
         top: 5,
-        width: 23,
-        height: 16
+        width: 30,
+        height: 22,
+        padding:5
     },
     imageaMain: {
         height: '100%',
