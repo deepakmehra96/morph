@@ -4,7 +4,6 @@ import Login from "../Views/Auth/Login";
 import SignUp from "../Views/Auth/Signup";
 import ActivationCode from "../Views/Auth/ActivationCode";
 import Header from "../components/Header";
-import SliderScreens from "../Views/Slider";
 import Location from "../Views/Location";
 import ConfirmLocation from "../Views/Location/ConfirmLocation";
 import LoggedinTabs from "../Views/FooterTab.js";
@@ -21,10 +20,11 @@ import BookingTime from "../Views/ExerciseBooking/BookingTime";
 import BookTrainer from "../Views/ExerciseBooking/BookTrainer";
 import TrainerProfile from "../Views/ExerciseBooking/TrainerProfile";
 import ConfirmPage from "../Views/ExerciseBooking/ConfirmPage";
+import CheckRoute from "../Views/CheckRoute";
 
 const AppNavigator = createStackNavigator(
   {
-    SliderScreens: SliderScreens,
+    CheckRoute: CheckRoute,
     LoggedinTabs: LoggedinTabs,
     Login: Login,
     SignUp: SignUp,
@@ -48,7 +48,7 @@ const AppNavigator = createStackNavigator(
     ConfirmPage:ConfirmPage
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "CheckRoute",
     defaultNavigationOptions: {
       gesturesEnabled: false
     },

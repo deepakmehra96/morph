@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux'
 import microValidator from 'micro-validator'
 import is from 'is_js'
@@ -66,6 +66,7 @@ class Login extends React.Component {
             userData.password = '',
             this.setState({ userData })
         this.props.navigation.navigate("LoggedinTabs")
+        AsyncStorage.setItem('token','sdhfvhbskdguvhdbouhj')
     }
 
     render() {
