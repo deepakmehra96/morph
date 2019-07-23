@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     },
     errorMsgText: {
         fontSize: fontSmall,
+        letterSpacing:2,
         color: errorColor
     },
     buttonOut: {

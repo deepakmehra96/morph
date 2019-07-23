@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, View, StyleSheet } from 'react-native'
-import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from "react-navigation"
+import { createStackNavigator, createBottomTabNavigator } from "react-navigation"
 import Main from '../Main';
 import Bookings from '../Bookings';
 import Favourite from '../Favourite';
@@ -26,15 +26,28 @@ const AccountsStack = createStackNavigator({
     UserPayment: {
         screen: UserPayment,
     },
-  });
+});
 
 const TabIcon = ({ activeImage, style }) => {
     let icon = activeImage
+    return (
+        <View style={styles.centerItem}>
+            <View style={styles.activeBorder}>
+            </View>
+            <View style={style}>
+                <Image source={icon} style={styles.imageMain} />
+            </View>
+        </View>
+    )
+}
 
+const TabIconActive = ({ activeImage, style }) => {
+    let icon = activeImage
     return (
         <View style={style}>
             <Image source={icon} style={styles.imageMain} />
-        </View>)
+        </View>
+    )
 }
 
 const Tabs = createBottomTabNavigator({
@@ -42,44 +55,56 @@ const Tabs = createBottomTabNavigator({
         screen: Main,
         navigationOptions: {
             title: '',
-            tabBarIcon: props => <TabIcon
-                {...props}
+            tabBarIcon: ({ focused }) => focused ? <TabIcon
                 activeImage={require('../../assets/home.png')}
                 style={styles.iconMain}
-            />
+
+            /> : <TabIconActive
+                    activeImage={require('../../assets/home.png')}
+                    style={styles.iconMain}
+                />
         }
     },
     Bookings: {
         screen: Bookings,
         navigationOptions: {
             title: '',
-            tabBarIcon: props => <TabIcon
-                {...props}
+            tabBarIcon: ({ focused }) => focused ? <TabIcon
                 activeImage={require('../../assets/booking.png')}
                 style={styles.iconMain}
-            />
+
+            /> : <TabIconActive
+                    activeImage={require('../../assets/booking.png')}
+                    style={styles.iconMain}
+                />
         }
     },
     Favourite: {
         screen: Favourite,
         navigationOptions: {
             title: '',
-            tabBarIcon: props => <TabIcon
-                {...props}
+            tabBarIcon: ({ focused }) => focused ? <TabIcon
                 activeImage={require('../../assets/fav.png')}
                 style={styles.iconHeart}
-            />
+
+            /> : <TabIconActive
+                    activeImage={require('../../assets/fav.png')}
+                    style={styles.iconHeart}
+                />
         }
     },
     Setting: {
         screen: AccountsStack,
         navigationOptions: {
             title: '',
-            tabBarIcon: props => <TabIcon
-                {...props}
+            tabBarIcon: ({ focused }) => focused ? <TabIcon
                 activeImage={require('../../assets/account.png')}
                 style={styles.iconMenu}
-            />
+
+            /> : <TabIconActive
+                    activeImage={require('../../assets/account.png')}
+                    style={styles.iconMenu}
+                />
         },
     },
 }, {
@@ -92,7 +117,7 @@ const Tabs = createBottomTabNavigator({
         }
     });
 
-const LoggedinTabs = createStackNavigator({ 
+const LoggedinTabs = createStackNavigator({
     LoggedinTabs: Tabs,
 }, { headerMode: true })
 
@@ -120,5 +145,15 @@ const styles = StyleSheet.create({
     iconMenu: {
         height: 18,
         width: 20
+    },
+    activeBorder:{ 
+        borderWidth: 2, 
+        borderColor: '#FFC379', 
+        width: 40, 
+        position: "absolute", 
+        top: -23, 
+    },
+    centerItem:{ 
+        alignItems: 'center' 
     }
 })

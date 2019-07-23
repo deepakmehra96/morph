@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     },
     errorMsgText: {
         fontSize: fontLarge,
+        letterSpacing:2,
         color: errorColor
     },
     signUpText: {

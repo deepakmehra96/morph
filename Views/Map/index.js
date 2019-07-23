@@ -61,7 +61,7 @@ class MapMain extends React.Component {
     // console.log(region, "currentLatitude currentLatitude")
     return (
       <MapView
-        style={{ height: '100%', width: '100%' }}
+        style={styles.container}
         region={this.state.region}
         // onRegionChange={region => this.setState({ region })}
         // onRegionChangeComplete={region => this.setState({ region })}
@@ -93,8 +93,7 @@ export default MapMain
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    flex: 1,
+    height: '100%', 
+    width: '100%' 
   },
 });

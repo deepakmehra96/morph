@@ -1,4 +1,3 @@
-
 import { Platform } from 'react-native';
 
 export const fontSmall = 10

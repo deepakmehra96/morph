@@ -5,27 +5,27 @@ var { height, width } = Dimensions.get('window')
 
 const ProfileBackground = props => {
     return (
-            <ImageBackground source={require('../../assets/profileBackGround.png')} style={styles.fullScreen}>
-                <SafeAreaView style={{ height:'60%', justifyContent:'center', alignItems:'center'}}>
-                    <View style={styles.backImageOut}>
-                        <Image resizeMode="contain" style={styles.imageMain} source={require('../../assets/LogoMain.png')} />
+        <ImageBackground source={require('../../assets/profileBackGround.png')} style={styles.fullScreen}>
+            <SafeAreaView style={styles.centerImage}>
+                <View style={styles.backImageOut}>
+                    <Image resizeMode="contain" style={styles.imageMain} source={require('../../assets/LogoMain.png')} />
+                </View>
+                <View style={styles.textPosition}>
+                    <Text style={styles.textHeading}>{props.textHeading}</Text>
+                </View>
+            </SafeAreaView>
+            {
+                props.imageMain ?
+                    <View style={styles.imageBorder}>
+                        <Image style={styles.imageMain} source={props.imageMain} />
                     </View>
-                    <View style={{ position:'absolute', alignItems:'center'}}>
-                        <Text style={styles.textHeading}>{props.textHeading}</Text>
-                    </View>
-                </SafeAreaView>
-                    {
-                        props.imageMain ?
-                            <View style={{ height: 110, width: 110, borderRadius: 60, overflow: 'hidden', borderWidth: 2, borderColor: whiteColor, position: 'absolute', top: 70 }}>
-                                <Image style={styles.imageMain} source={props.imageMain} />
-                            </View>
-                            :
-                            null
-                    }
-                    <View style={styles.contentOut}>
-                        {props.content}
-                    </View>
-            </ImageBackground>
+                    :
+                    null
+            }
+            <View style={styles.contentOut}>
+                {props.content}
+            </View>
+        </ImageBackground>
     )
 }
 export default ProfileBackground
@@ -62,6 +62,25 @@ const styles = StyleSheet.create({
         color: whiteColor,
         fontSize: fontXXL,
         letterSpacing: 3,
-        marginTop:35
+        marginTop: 35
     },
+    imageBorder: {
+        height: 110,
+        width: 110,
+        borderRadius: 110 / 2,
+        overflow: 'hidden',
+        borderWidth: 2,
+        borderColor: whiteColor,
+        position: 'absolute',
+        top: 70
+    },
+    textPosition: {
+        position: 'absolute',
+        alignItems: 'center'
+    },
+    centerImage: {
+        height: '60%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 })

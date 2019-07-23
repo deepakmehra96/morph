@@ -13,7 +13,6 @@ class DialogBox extends React.Component {
             starCount: 3
         };
     }
-
     onStarRatingPress(rating) {
         this.setState({
             starCount: rating
@@ -21,9 +20,6 @@ class DialogBox extends React.Component {
     }
     onTouchOutside() {
         this.props.openCloseModal(false)
-    }
-    ratingCompleted(e) {
-        console.log(e)
     }
 
     render() {
@@ -36,10 +32,10 @@ class DialogBox extends React.Component {
                 onTouchOutside={() => {
                     Keyboard.dismiss()
                 }}
-                dialogStyle={[this.props.propStyle, { backgroundColor: '#fff', borderRadius: 0, padding: 0 }]}
-                containerStyle={{ padding: 0, width: width }}>
+                dialogStyle={[this.props.propStyle, styles.dialogStyles]}
+                containerStyle={styles.containerOut}>
                 <DialogContent>
-                    <View style={[this.props.height, { width: width, paddingTop: 30, padding: 20, flexDirection: 'row', alignItems: 'center' }]}>
+                    <View style={[this.props.height, styles.ratingOut]}>
                         <View style={styles.textOut}>
                             <Text style={styles.ratingText}>RATE TRAINER</Text>
                         </View>
@@ -61,10 +57,10 @@ class DialogBox extends React.Component {
                             style={styles.textInputStyles} />
                     </View>
                 </DialogContent>
-                <TouchableOpacity onPress={() => this.onTouchOutside()} style={{ position: 'absolute', right: 25, top: 2 }}>
+                <TouchableOpacity onPress={() => this.onTouchOutside()} style={styles.crossOut}>
                     <Text>X</Text>
                 </TouchableOpacity>
-                <View style={{ alignItems: 'center', position: 'absolute', bottom: 20, left: '18%' }}>
+                <View style={styles.btnOut}>
                     <ButtonMain isColored={true} label="SEND" />
                 </View>
             </Dialog>
@@ -98,6 +94,31 @@ const styles = StyleSheet.create({
         height: 60,
         borderBottomWidth: 2,
         borderBottomColor: "#A1A1A1"
+    },
+    btnOut:{ 
+        alignItems: 'center', 
+        position: 'absolute', 
+        bottom: 20, 
+        left: '18%' 
+    },
+    crossOut:{ 
+        position: 'absolute', 
+        right: 30, 
+        top: 2 
+    },
+    ratingOut:{ 
+        width: width, 
+        paddingTop: 30, 
+        padding: 20, 
+        flexDirection: 'row', 
+        alignItems: 'center' 
+    },
+    containerOut:{ 
+        padding: 0, 
+        width: width 
+    },
+    dialogStyles:{
+        backgroundColor: '#fff', borderRadius: 0, padding: 0 
     }
 })
 

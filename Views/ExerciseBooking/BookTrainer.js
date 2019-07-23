@@ -7,6 +7,7 @@ import Header from '../../components/Header';
 import ProfileBackground from '../../components/ProfileBackground';
 var { height, width } = Dimensions.get('window')
 import { CheckBox, Card } from 'react-native-elements'
+import { openToast } from '../../redux/actions';
 
 
 
@@ -108,7 +109,12 @@ class BookTrainer extends React.Component {
         this.setState({ selectGender: data, setDropDown: false })
     }
     handleSubmit(){
-        this.props.navigation.navigate('TrainerProfile')
+        let { selectedId } = this.state
+        if (selectedId) {
+            this.props.navigation.navigate('TrainerProfile')
+        }else{
+            this.props.dispatch(openToast('Please Select Trainer'))
+        }
     }
 
     render() {

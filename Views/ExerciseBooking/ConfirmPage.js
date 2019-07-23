@@ -21,7 +21,7 @@ class ConfirmPage extends React.Component {
         super()
         this.state = {
             selectPayment: '',
-            dialogVisible:false
+            dialogVisible: false
         };
     }
     componentDidMount() {
@@ -45,11 +45,11 @@ class ConfirmPage extends React.Component {
             )
         }
     }
-    handleSubmit(){
-        this.setState({ dialogVisible : true})
+    handleSubmit() {
+        this.setState({ dialogVisible: true })
     }
-    handleModal(visible){
-        this.setState({ dialogVisible : false})
+    handleModal(visible) {
+        this.setState({ dialogVisible: false })
     }
 
     render() {
@@ -63,7 +63,7 @@ class ConfirmPage extends React.Component {
                 <View style={styles.flexSecondCon}>
                     <View style={styles.innerContainer}>
                         <ScrollView>
-                            <View style={{ height: height - 200 }}>
+                            <View>
                                 <ListItem
                                     heading="22 Jun 2019, 14:30"
                                     iconLeftStyle={styles.iconOutCalender}
@@ -86,18 +86,19 @@ class ConfirmPage extends React.Component {
                                 />
                             </View>
                         </ScrollView>
-                        <View style={styles.btnStyles}>
-                            {this.handleDropDown()}
-                            <ButtonMain onPress={() => this.handleSubmit()} isColored={true} label="CONFIRM & PAY" />
-                        </View>
+
+                    </View>
+                    <View style={styles.btnStyles}>
+                        {this.handleDropDown()}
+                        <ButtonMain onPress={() => this.handleSubmit()} isColored={true} label="CONFIRM & PAY" />
                     </View>
                 </View>
-                <DialogBox 
-                    visible={dialogVisible} 
-                    openCloseModal={() => this.handleModal()} 
-                    headingText="ADD GOAL" 
-                    propStyle={{height: 230 }}
-                    height="100%"/>      
+                <DialogBox
+                    visible={dialogVisible}
+                    openCloseModal={() => this.handleModal()}
+                    headingText="ADD GOAL"
+                    propStyle={{ height: 230 }}
+                    height="100%" />
             </View>
         )
     }
@@ -118,12 +119,11 @@ const styles = StyleSheet.create({
     innerContainer: {
         backgroundColor: '#fff',
         paddingBottom: 90
-
     },
-    textStyle:{
+    textStyle: {
         color: '#4F4F4F',
-        letterSpacing:1,
-     },
+        letterSpacing: 1,
+    },
     iconOutLoaction: {
         marginLeft: 5
     },

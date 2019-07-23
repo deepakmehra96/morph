@@ -43,7 +43,7 @@ class Location extends React.Component {
         return (
             <View style={styles.fullScreen}>
                 <BackgroundContent />
-                <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : 'position'}>
+                <KeyboardAvoidingView behavior={'position'}>
                     <View style={styles.mainContainer}>
                         <BackgroundText showImage={true} textHeading="LOCATION" />
                         <Text style={styles.textBottom}>Find the default location you wish to exercise</Text>
@@ -95,7 +95,8 @@ const styles = StyleSheet.create({
     },
     errorMsgText: {
         fontSize: fontSmall,
-        color: errorColor
+        color: errorColor,
+        letterSpacing : 2
     },
     buttonOut: {
         marginTop: 25,

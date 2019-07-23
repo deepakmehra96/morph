@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import { whiteColor, fontXL, fontLarge, fontSmall, fontMedium, fontXXL, buttonBottom, buttonView } from '../../components/constant';
 import ButtonMain from '../../components/ButtonMain';
 import BackgroundText from '../../components/BackgroundText';
+import { openToast } from '../../redux/actions';
 var { height, width } = Dimensions.get('window')
 
 class BookingTime extends React.Component {
@@ -34,7 +35,12 @@ class BookingTime extends React.Component {
     }
 
     handleSubmit(){
-        this.props.navigation.navigate('BookTrainer')
+        let { selectedDateId,selectedTimeId } = this.state
+        if (selectedTimeId && selectedDateId) {
+            this.props.navigation.navigate('BookTrainer')
+        }else{
+            this.props.dispatch(openToast('Please Select Proper Time'))
+        }
     }
 
     handleDateSelect(val) {

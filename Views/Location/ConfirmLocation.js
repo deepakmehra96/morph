@@ -156,7 +156,7 @@ class ConfirmLocation extends React.Component {
                 <SafeAreaView>
                     <ScrollView scrollEnabled={!setDropDown}>
                         <View style={styles.scrolllContent}>
-                            <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : 'position'}>
+                            <KeyboardAvoidingView behavior={'position'}>
                                 <Header label="CONFIRM LOCATION" source={require('../../assets/back-white-arrow.png')} navigation={this.props.navigation} />
                                 {this.handleDropDown()}
                                 {this.getDropDown()}
@@ -268,7 +268,8 @@ const styles = StyleSheet.create({
     },
     errorMsgText: {
         fontSize: fontSmall,
-        color: errorColor
+        color: errorColor,
+        letterSpacing:2,
     },
     mainCon: {
         marginTop: 52,

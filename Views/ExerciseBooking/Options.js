@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import { whiteColor, fontXL, fontLarge, fontSmall, fontMedium, fontXXL, buttonBottom } from '../../components/constant';
 import ButtonMain from '../../components/ButtonMain';
 import BackgroundText from '../../components/BackgroundText';
+import { openToast } from '../../redux/actions';
 var { height, width } = Dimensions.get('window')
 
 class Options extends React.Component {
@@ -35,7 +36,12 @@ class Options extends React.Component {
         }
     }
     handleSubmit() {
-        this.props.navigation.navigate('BookingTime')
+        let { selectedId } = this.state
+        if (selectedId) {
+            this.props.navigation.navigate('BookingTime')
+        }else{
+            this.props.dispatch(openToast('Please Select Kit Size'))
+        }
     }
     
     render() {

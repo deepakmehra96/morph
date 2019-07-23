@@ -22,6 +22,7 @@ import TrainerProfile from "../Views/ExerciseBooking/TrainerProfile";
 import ConfirmPage from "../Views/ExerciseBooking/ConfirmPage";
 import CheckRoute from "../Views/CheckRoute";
 
+
 const AppNavigator = createStackNavigator(
   {
     CheckRoute: CheckRoute,
